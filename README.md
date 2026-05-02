@@ -9,7 +9,7 @@
 ![Vite](https://img.shields.io/badge/Vite-6.0-BD34FE?style=for-the-badge&logo=Vite&logoColor=white)
 ![GitHub Pages](https://img.shields.io/badge/Deploy-GitHub%20Pages-222222?style=for-the-badge&logo=github&logoColor=white)
 
-<!-- **📍 Live Demo: [View Report](https://hei1sme.github.io/hei-FCAJ-intership-report/)** -->
+
 
 </div>
 
@@ -17,7 +17,7 @@
 
 ## 📖 Introduction
 
-Welcome to my **FCJ Internship Report**! This web application documents my 12-week journey as a **FCAJ Cloud Intern** at **Amazon Web Services Vietnam** with **Team NeuraX**. It serves as a comprehensive portfolio, tracking my weekly progress, technical workshops, events participated, and self-evaluation.
+Welcome to my **FCJ Internship Report**! This web application documents my 8-week journey as a **FCAJ Cloud Intern** at **Amazon Web Services Vietnam**. It serves as a comprehensive portfolio, tracking my weekly progress, technical workshops, events participated, and self-evaluation.
 
 ## ✨ Key Features
 
@@ -88,7 +88,7 @@ hei-intership-report/
 
 ```bash
 # Clone the repository
-git clone https://github.com/tcorexio/FCAJ_Portfolio.git
+git clone https://github.com/OdtaDeL/FCAJ_Portfolio.git
 cd FCAJ_Portfolio
 
 # Install dependencies
@@ -117,9 +117,8 @@ npm run deploy
 
 | | |
 |:-:|:-|
-| **Name** | Nguyễn Thành Trọng |
+| **Name** | Le Dat Do |
 | **Position** | FCAJ Cloud Intern |
-| **Team** | NeuraX |
 | **Company** | Amazon Web Services Vietnam |
 | **Program** | First Cloud AI Journey (FCAJ) |
 | **Duration** | 09/03/2026 - 03/05/2026 |
@@ -136,7 +135,7 @@ This project is for educational and portfolio purposes as part of the FCJ Intern
 
 **Built with ❤️ using React & Vite**
 
-[![GitHub](https://img.shields.io/badge/GitHub-tcorexio-181717?style=flat-square&logo=github)](https://github.com/tcorexio)
+[![GitHub](https://img.shields.io/badge/GitHub-tcorexio-181717?style=flat-square&logo=github)](https://github.com/OdtaDeL)
 
 </div>
 # FCAJ_Portfolio

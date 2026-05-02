@@ -1,40 +1,37 @@
-
-
 ### Mục Tiêu Tuần 1
 
-* Chốt yêu cầu chức năng và các tiêu chuẩn phi chức năng (NFR) cho ứng dụng Spendwise.
-* Khởi tạo chiến lược quản lý hạ tầng bằng Terraform (S3 backend/State strategy).
-* Thiết lập nền móng hạ tầng mạng cơ bản trên AWS bao gồm VPC, Security Groups, ALB và ECR.
+* Làm quen với team và thiết lập kênh giao tiếp nội bộ.
+* Chốt đề tài dự án Spendwise.
+* Nghiên cứu các công nghệ và dịch vụ AWS liên quan.
+* Định hướng kiến trúc hệ thống tổng thể.
 
 ### Các công việc thực hiện trong tuần
 
 | Ngày | Công việc | Bắt đầu | Hoàn thành | Tài liệu tham khảo |
-| --- | --- | --- | --- | --- |
-| 1 | - Phân tích yêu cầu Spendwise <br>&emsp; + Chốt tính năng theo dõi và phân tích tài chính <br>&emsp; + Xác định các yêu cầu về tính ổn định và an toàn dữ liệu | 09/03/2026 | 09/03/2026 | |
-| 2 | - Khởi tạo Terraform <br>&emsp; + Cấu hình S3 bucket làm remote backend <br>&emsp; + Thiết lập DynamoDB để lock state | 10/03/2026 | 10/03/2026 | |
-| 3 | - Thiết lập **Amazon VPC** <br>&emsp; + Chia Subnet Public/Private trên nhiều Availability Zones <br>&emsp; + Cấu hình Internet Gateway cho lớp Public | 11/03/2026 | 11/03/2026 | |
-| 4 | - Cấu hình Security <br>&emsp; + Thiết lập **Security Group** cho ALB, ECS và RDS <br>&emsp; + Áp dụng nguyên tắc Least Privilege | 12/03/2026 | 12/03/2026 | |
-| 5 | - Khởi tạo dịch vụ tính toán <br>&emsp; + Tạo repository trên **Amazon ECR** <br>&emsp; + Cấu hình cluster **Amazon ECS** cơ bản | 13/03/2026 | 13/03/2026 | |
-| 6 | - Cân bằng tải <br>&emsp; + Thiết lập **Application Load Balancer (ALB)** <br>&emsp; + Cấu hình Target Group cho backend NestJS | 14/03/2026 | 14/03/2026 | |
-| 7 | - Kiểm tra hạ tầng <br>&emsp; + Verify kết nối mạng giữa các subnet <br>&emsp; + Kiểm tra khả năng đẩy image lên ECR | 15/03/2026 | 15/03/2026 | |
+|------|----------|--------|------------|--------------------|
+| 1 | - Thiết lập kênh giao tiếp nội bộ (Zalo, Discord) <br>&emsp; + Thống nhất cách trao đổi công việc <br>&emsp; + Phân chia vai trò trong team | 09/03/2026 | 09/03/2026 | - |
+| 2 | - Thảo luận và chốt đề tài Spendwise <br>&emsp; + Xác định mục tiêu ứng dụng <br>&emsp; + Xác định người dùng mục tiêu | 10/03/2026 | 10/03/2026 | - |
+| 3 | - Phân tích yêu cầu hệ thống <br>&emsp; + Các chức năng chính (theo dõi chi tiêu, phân tích tài chính) <br>&emsp; + Các yêu cầu phi chức năng (bảo mật, ổn định) | 11/03/2026 | 11/03/2026 | - |
+| 4 | - Nghiên cứu các dịch vụ AWS cần thiết <br>&emsp; + ECS, RDS, VPC, Cognito <br>&emsp; + Tổng quan về kiến trúc Cloud | 12/03/2026 | 12/03/2026 | - |
+| 5 | - Làm quen với Docker và Terraform <br>&emsp; + Hiểu khái niệm container <br>&emsp; + Infrastructure as Code | 13/03/2026 | 13/03/2026 | - |
+| 6 | - Thiết kế kiến trúc hệ thống sơ bộ <br>&emsp; + Mô hình 3-tier (Frontend, Backend, Database) | 14/03/2026 | 14/03/2026 | - |
+| 7 | - Tổng hợp kiến thức và chuẩn bị kế hoạch triển khai | 15/03/2026 | 15/03/2026 | - |
 
 ### Kết quả đạt được Tuần 1
 
-* Toàn bộ thành viên đã thống nhất về kiến trúc 3-tier triển khai trên AWS Cloud.
-* Hạ tầng mạng (VPC) đã sẵn sàng với các lớp bảo vệ Security Group tương ứng cho từng dịch vụ.
-* Đã có kho lưu trữ image (ECR) và điểm vào hệ thống (ALB) để chuẩn bị cho việc deploy ứng dụng.
+* Thiết lập được kênh giao tiếp và workflow làm việc rõ ràng trong team.
+* Chốt được đề tài và phạm vi dự án Spendwise.
+* Có cái nhìn tổng quan về các công nghệ và dịch vụ sẽ sử dụng.
+* Định hình kiến trúc hệ thống ban đầu.
 
 ### Khó khăn & Bài học
 
-* **Khó khăn:** 
-  * Việc phân chia Subnet và cấu hình Routing cho các VPC Endpoint ban đầu khá phức tạp để đảm bảo traffic nội bộ không đi qua Internet.
-* **Giải pháp:** 
-  * Tham khảo tài liệu Best Practice của AWS về VPC Design và tách biệt rõ ràng lớp Public/Private.
-* **Bài học:** 
-  * Việc sử dụng Terraform từ ngày đầu giúp kiểm soát hạ tầng chặt chẽ và dễ dàng tái sử dụng cấu hình cho các môi trường khác nhau.
+* **Khó khăn:** Làm quen với nhiều công nghệ mới trong thời gian ngắn.
+* **Giải pháp:** Chia nhỏ nội dung học và trao đổi thường xuyên trong nhóm.
+* **Bài học:** Việc chuẩn bị kỹ càng ở giai đoạn đầu giúp giảm sai sót trong các bước triển khai sau.
 
 ### Kế hoạch Tuần tới
 
-* Tích hợp **Amazon Cognito** cho hệ thống đăng nhập/đăng ký.
-* Thực hiện đẩy Backend image lên ECR và triển khai chính thức trên ECS Fargate.
-* Kết nối Frontend Amplify với API endpoint thực tế.
+* Bắt đầu triển khai hạ tầng bằng Terraform.
+* Thiết lập hệ thống mạng (VPC, Subnet, Security Group).
+* Chuẩn bị môi trường để deploy ứng dụng.
