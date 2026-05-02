@@ -1,9 +1,9 @@
 {
-  "name": "hei-internship-report",
+  "name": "FCAJ_Portfolio",
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "homepage": "https://hei1sme.github.io/hei-FCAJ-intership-report/",
+  "homepage": "https://OdtaDeL.github.io/FCAJ_Portfolio",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

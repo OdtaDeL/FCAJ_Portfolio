@@ -64,7 +64,7 @@ export function Hero() {
                         {t(profile.role)}
                     </p>
                     <p className="text-text-secondary">
-                        Team {profile.team} @ {t(profile.company)}
+                        {t(profile.company)}
                     </p>
                 </motion.div>
 
