@@ -31,9 +31,9 @@ Sự kiện kết thúc với phiên hỏi đáp tương tác và cơ hội kế
 
 ## Kết quả đạt được
 
-- <strong>Sự phát triển của Platform Engineering:</strong> Hiểu rõ cách kỹ thuật nền tảng giúp tinh gọn trải nghiệm của nhà phát triển trong môi trường cloud-native.
-- <strong>Khung làm việc Agentic AI:</strong> Xác định cách áp dụng Multi-Agent Workflows và Bedrock Agents để tự động hóa các logic kinh doanh phức tạp.
-- <strong>Các mô hình tìm kiếm nâng cao:</strong> Tìm hiểu về GraphRAG và Nova Embeddings để xử lý dữ liệu đa phương thức (văn bản, hình ảnh, video) vượt xa các mô hình RAG truyền thống.
-- <strong>Bảo mật và hiệu suất tại vùng biên:</strong> Nhận diện Amazon CloudFront là lớp nền tảng quan trọng cho bảo mật và phân phối nội dung hiệu quả về chi phí.
-- <strong>Ứng dụng cho SpendWise:</strong> Xác định các tính năng bảo mật của CloudFront và tích hợp WAF là các thành phần quan trọng để bảo vệ các điểm cuối API tài chính của SpendWise.
-- <strong>Khả năng quan sát (Observability) trong AI:</strong> Khám phá các công cụ như Langfuse để giám sát ứng dụng GenAI, có thể áp dụng cho các tính năng phân tích tài chính dựa trên AI trong tương lai của SpendWise.
+- **Sự phát triển của Platform Engineering:** Hiểu rõ cách kỹ thuật nền tảng giúp tinh gọn trải nghiệm của nhà phát triển trong môi trường cloud-native.
+- **Khung làm việc Agentic AI:** Xác định cách áp dụng Multi-Agent Workflows và Bedrock Agents để tự động hóa các logic kinh doanh phức tạp.
+- **Các mô hình tìm kiếm nâng cao:** Tìm hiểu về GraphRAG và Nova Embeddings để xử lý dữ liệu đa phương thức (văn bản, hình ảnh, video) vượt xa các mô hình RAG truyền thống.
+- **Bảo mật và hiệu suất tại vùng biên:** Nhận diện Amazon CloudFront là lớp nền tảng quan trọng cho bảo mật và phân phối nội dung hiệu quả về chi phí.
+- **Ứng dụng cho SpendWise:** Xác định các tính năng bảo mật của CloudFront và tích hợp WAF là các thành phần quan trọng để bảo vệ các điểm cuối API tài chính của SpendWise.
+- **Khả năng quan sát (Observability) trong AI:** Khám phá các công cụ như Langfuse để giám sát ứng dụng GenAI, có thể áp dụng cho các tính năng phân tích tài chính dựa trên AI trong tương lai của SpendWise.

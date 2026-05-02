@@ -149,7 +149,20 @@ export function EventsPage() {
                     </h3>
                     <ul className="list-disc list-inside space-y-1 text-text-secondary">
                       {event.outcomes.map((item, i) => (
-                        <li key={i}>{item}</li>
+                        <li key={i}>
+                          <ReactMarkdown
+                            components={{
+                              p({ children }) {
+                                return <>{children}</>;
+                              },
+                              strong({ children }) {
+                                return <strong className="font-semibold text-text-primary">{children}</strong>;
+                              },
+                            }}
+                          >
+                            {item}
+                          </ReactMarkdown>
+                        </li>
                       ))}
                     </ul>
                   </div>
