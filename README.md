@@ -60,7 +60,7 @@ Welcome to my **FCJ Internship Report**! This web application documents my 8-wee
 ## 📂 Project Structure
 
 ```
-hei-intership-report/
+FCAJ_Portfolio/
 ├── 📁 content/              # Markdown content (en/vi)
 │   ├── 📁 worklog/          # Weekly updates (week-1 to week-12)
 │   ├── 📁 workshop/         # Workshop documentation
