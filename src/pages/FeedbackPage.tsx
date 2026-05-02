@@ -38,8 +38,12 @@ export function FeedbackPage() {
 
         {/* Footer */}
         <div className="mt-16 pt-8 border-t border-gray-200 text-center">
-          <div className="flex justify-center items-center gap-6 mb-4 bg-gray-200 ">
-            <img src="./FCJ-logo.png" alt="FCJ" className="h-10" />
+          <div className="inline-flex justify-center items-center mb-4 rounded-xl border border-gray-200 bg-white px-6 py-3 shadow-sm">
+            <img
+              src={`${import.meta.env.BASE_URL}FCJ-logo.png`}
+              alt="FCJ"
+              className="h-14 w-auto object-contain drop-shadow-[0_2px_6px_rgba(0,0,0,0.12)]"
+            />
           </div>
           <p className="text-text-muted text-sm">
             © 2026 Le Dat Do. First Cloud AI Journey Internship Report.
