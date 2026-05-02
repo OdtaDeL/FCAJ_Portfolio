@@ -31,9 +31,9 @@ The event concluded with an interactive Q&A session and networking opportunities
 
 ## Outcomes
 
-- **Platform Engineering Evolution:** Gained a clear understanding of how platform engineering streamlines the developer experience in cloud-native environments.
-- **Agentic AI Frameworks:** Identified how Multi-Agent Workflows and Bedrock Agents can be utilized to automate complex business logic.
-- **Advanced Search Patterns:** Learned about GraphRAG and Nova Embeddings for processing multimodal data (text, image, video) beyond traditional RAG.
-- **Edge Security & Performance:** Recognized Amazon CloudFront as a foundational layer for security and cost-effective content delivery.
-- **SpendWise Application:** Identified CloudFront's security features and WAF integration as vital components to protect SpendWise's financial API endpoints.
-- **Observability in AI:** Explored tools like Langfuse for monitoring GenAI applications, applicable for future AI-driven financial insights in SpendWise.
+- <strong>Platform Engineering Evolution:</strong> Gained a clear understanding of how platform engineering streamlines the developer experience in cloud-native environments.
+- <strong>Agentic AI Frameworks:</strong> Identified how Multi-Agent Workflows and Bedrock Agents can be utilized to automate complex business logic.
+- <strong>Advanced Search Patterns:</strong> Learned about GraphRAG and Nova Embeddings for processing multimodal data (text, image, video) beyond traditional RAG.
+- <strong>Edge Security & Performance:</strong> Recognized Amazon CloudFront as a foundational layer for security and cost-effective content delivery.
+- <strong>SpendWise Application:</strong> Identified CloudFront's security features and WAF integration as vital components to protect SpendWise's financial API endpoints.
+- <strong>Observability in AI:</strong> Explored tools like Langfuse for monitoring GenAI applications, applicable for future AI-driven financial insights in SpendWise.
