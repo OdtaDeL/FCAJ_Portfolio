@@ -1,0 +1,40 @@
+﻿# NutriTrack — Workshop Triển Khai Full-Stack Trên AWS
+
+## Tổng quan
+Hướng dẫn này cung cấp quy trình từng bước hoàn chỉnh để triển khai **NutriTrack** — hệ thống theo dõi dinh dưỡng và phân tích hình ảnh AI tự động trên AWS. Workshop tận dụng khung quản trị **AWS Amplify Gen 2** để thiết lập hạ tầng serverless cốt lõi bao gồm **Amazon Cognito** (Xác thực), **AWS AppSync** & **DynamoDB** (Dữ liệu), và **Amazon S3** (Lưu trữ). Hệ thống được mở rộng với tầng tính toán hiệu năng cao bằng **Amazon ECS Fargate** để xử lý các tác vụ thị giác máy tính và phân tích dinh dưỡng sâu qua **Amazon Bedrock**, kết nối linh hoạt với ứng dụng mobile **React Native**. Toàn bộ giải pháp được tích hợp quy trình **CI/CD** tự động, giúp tối ưu hóa việc triển khai từ giai đoạn phát triển đến vận hành thực tế trên môi trường cloud.
+
+## Nội dung thực hành
+
+1. [Tổng quan](4.1-Overview/)
+2. [Điều kiện tiên quyết](4.2-Prerequiste/)
+3. [Thiết lập Frontend](4.3-Frontend/)
+4. [Thiết lập Backend](4.4-Backend/)
+5. [Tầng Container ECS Fargate](4.5-ECS-Fargate/)
+6. [CI/CD](4.6-CICD/)
+7. [Dọn dẹp tài nguyên](4.7-Cleanup/)
+
+## Ước tính chi phí
+
+Dưới đây là bảng ước tính chi phí cho việc duy trì hệ thống NutriTrack trên AWS. Lưu ý rằng chi phí thực tế có thể thay đổi tùy thuộc vào mức độ sử dụng và cấu hình cụ thể.
+
+| Dịch vụ              | Chi phí tháng | Chi phí/Ngày |
+|----------------------|-------------:|-------------:|
+| Amazon Route 53      | $0.90        | $0.016       |
+| Amplify WAF          | $42.10       | $1.403       |
+| CloudFront           | $0.00        | $0.850       |
+| AWS Amplify          | $4.65        | $0.341       |
+| Fargate ARM64        | $10.23       | $0.254       |
+| ALB                  | $28.46       | $0.040       |
+| NAT Instance         | $7.63        | $0.2544      |
+| Amazon Cognito       | $0.00        | $0.016       |
+| AWS AppSync          | $3.11        | $0           |
+| AWS Lambda           | $0.00        | $0.008       |
+| Amazon Transcribe    | $6.57        | $0.010       |
+| Amazon Bedrock       | $147.57      | $0.001       |
+| Amazon S3            | $1.47        | $0           |
+| Amazon DynamoDB      | $0.13        | $0.007       |
+| CloudWatch           | $0.00        | $0           |
+| AWS Secrets Manager  | $1.20        | $0           |
+| **Tổng cộng**        | **$254.02**  | **$2.94**    |
+
+---

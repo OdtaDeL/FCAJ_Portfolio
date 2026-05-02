@@ -1,0 +1,9 @@
+{
+  "enabledPlugins": {
+    "context7@claude-plugins-official": true,
+    "deploy-on-aws@claude-plugins-official": true,
+    "aws-serverless@claude-plugins-official": true,
+    "claude-mem@thedotmack": true,
+    "remember@claude-plugins-official": true
+  }
+}
