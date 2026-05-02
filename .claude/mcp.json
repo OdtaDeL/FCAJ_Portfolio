@@ -1,0 +1,71 @@
+{
+  "mcpServers": {
+    "context7": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@upstash/context7-mcp",
+        "--api-key",
+        "YOUR_API_KEY"
+      ]
+    },
+    "shadcn": {
+      "command": "npx",
+      "args": [
+        "shadcn@latest",
+        "mcp"
+      ]
+    },
+    "aws-core": {
+      "command": "uvx",
+      "args": [
+        "awslabs.core-mcp-server@latest"
+      ],
+      "env": {
+        "FASTMCP_LOG_LEVEL": "ERROR",
+        "AWS_PROFILE": "default",
+        "AWS_REGION": "us-east-1"
+      }
+    },
+    "aws-documentation": {
+      "command": "uvx",
+      "args": [
+        "awslabs.aws-documentation-mcp-server@latest"
+      ],
+      "env": {
+        "FASTMCP_LOG_LEVEL": "ERROR"
+      }
+    },
+    "aws-diagram": {
+      "command": "uvx",
+      "args": [
+        "awslabs.aws-diagram-mcp-server@latest"
+      ],
+      "env": {
+        "FASTMCP_LOG_LEVEL": "ERROR"
+      }
+    },
+    "bedrock-kb-retrieval": {
+      "command": "uvx",
+      "args": [
+        "awslabs.bedrock-kb-retrieval-mcp-server@latest"
+      ],
+      "env": {
+        "FASTMCP_LOG_LEVEL": "ERROR",
+        "AWS_PROFILE": "default",
+        "AWS_REGION": "us-east-1"
+      }
+    },
+    "lambda-tool": {
+      "command": "uvx",
+      "args": [
+        "awslabs.lambda-tool-mcp-server@latest"
+      ],
+      "env": {
+        "FASTMCP_LOG_LEVEL": "ERROR",
+        "AWS_PROFILE": "default",
+        "AWS_REGION": "us-east-1"
+      }
+    }
+  }
+}

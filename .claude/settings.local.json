@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls *.toml *.yaml *.yml)",
+      "Bash(npm run:*)",
+      "mcp__aws-documentation__search_documentation",
+      "mcp__aws-documentation__read_sections",
+      "mcp__aws-documentation__read_documentation",
+      "WebFetch(domain:aws.amazon.com)",
+      "WebFetch(domain:pricing.us-east-1.amazonaws.com)",
+      "WebFetch(domain:b0.gone.aws)",
+      "mcp__plugin_deploy-on-aws_awspricing__get_pricing_service_attributes",
+      "mcp__plugin_deploy-on-aws_awspricing__get_pricing_attribute_values",
+      "mcp__plugin_deploy-on-aws_awspricing__get_pricing",
+      "Bash(cat)",
+      "Bash(bash /tmp/image_audit.sh)",
+      "mcp__plugin_deploy-on-aws_awsknowledge__aws___search_documentation",
+      "Bash(xargs sed:*)"
+    ]
+  }
+}
