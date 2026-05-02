@@ -135,7 +135,7 @@ This project is for educational and portfolio purposes as part of the FCJ Intern
 
 **Built with ❤️ using React & Vite**
 
-[![GitHub](https://img.shields.io/badge/GitHub-OdtaDel-181717?style=flat-square&logo=github)](https://github.com/OdtaDeL)
+[![GitHub](https://img.shields.io/badge/GitHub-OdtaDeL-181717?style=flat-square&logo=github)](https://github.com/OdtaDeL)
 
 </div>
 # FCAJ_Portfolio
