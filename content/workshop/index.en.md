@@ -1,74 +1,56 @@
----
-title: "SpendWise — AWS Full-Stack Deployment Workshop"
-slug: "/workshop"
-description: "This guide provides a complete step-by-step process for deploying NutriTrack—an automated AI nutrition tracking and image analysis system on AWS."
-thumbnail: "/images/workshop/default-thumbnail.png"
-date: "2026-05-03"
-tags: ["AWS", "SpendWise", "Full-Stack", "Deployment", "Workshop"]
-category: "Workshop"
-author: "FCAJ Team"
-status: "published"
----
-
 ## Overview
 
-This guide provides a complete step-by-step process for deploying **NutriTrack**—an automated AI nutrition tracking and image analysis system on AWS. The workshop leverages the **AWS Amplify Gen 2** governance framework to establish a core serverless infrastructure including **Amazon Cognito** (Authentication), **AWS AppSync** & **DynamoDB** (Data), and **Amazon S3** (Storage). The system is extended with a high-performance computing layer using **Amazon ECS Fargate** to handle computer vision tasks and in-depth nutrition analysis via **Amazon Bedrock**, seamlessly connecting to the **React Native** mobile application. The entire solution incorporates an automated **CI/CD** process, optimizing deployment from development to actual operation in the cloud environment.
+SpendWise is a modern personal finance management web application that helps users track and analyze their spending intuitively. The system is deployed on AWS Cloud using a **3-tier** architecture, ensuring high security through a Virtual Private Cloud (VPC), centralized user authentication (Cognito), and Infrastructure as Code (IaC) management.
 
 ## What You Will Learn
 
-- Design and deploy a full-stack AWS application using modern cloud services
-- Implement serverless architecture with AWS Amplify Gen 2
-- Set up authentication with Amazon Cognito
-- Build GraphQL APIs with AWS AppSync and DynamoDB
-- Deploy containerized applications with ECS Fargate
-- Integrate AI services using Amazon Bedrock
-- Establish CI/CD pipelines for automated deployment
-- Optimize costs and manage cloud resources effectively
+* How to set up a secure network infrastructure with **Amazon VPC**, partitioning Public/Private Subnets, and configuring **VPC Endpoints**.
+* Deploying containerized applications using **Amazon ECS Fargate** combined with an **Application Load Balancer (ALB)**.
+* Managing identity and user authentication with **Amazon Cognito**.
+* Operating and connecting an **Amazon RDS** relational database within a secure private network.
+* Automating Frontend deployment using **AWS Amplify** and securing the application with **AWS WAF** & **Secrets Manager**.
 
 ## Requirements
 
-- AWS Account with administrator access
-- Basic knowledge of AWS services and cloud computing
-- Experience with React Native development
-- Understanding of containerization and Docker
-- Familiarity with CI/CD concepts
+* An AWS Account (Free Tier or available credit).
+* Basic knowledge of **NextJS** (Frontend) and **NestJS** (Backend).
+* Git and Terraform installed (for infrastructure deployment as code).
 
 ## Content
 
-## Workshop Contents
+# SpendWise — Full-Stack Deployment Workshop on AWS
 
-1. [Overview](4.1-Overview/)
-2. [Prerequisites](4.2-Prerequiste/)
-3. [Frontend Setup](4.3-Frontend/)
-4. [Backend Setup](4.4-Backend/)
-5. [ECS Fargate Tier](4.5-ECS-Fargate/)
-6. [CI/CD](4.6-CICD/)
-7. [Resource Cleanup](4.7-Cleanup/)
+## Overview
+This guide provides a complete step-by-step process for deploying **SpendWise** — a personal finance management and analysis system on AWS. The workshop focuses on building a solid infrastructure using **Terraform**, utilizing **Amazon Cognito** for identity management, and **Amazon ECS Fargate** to run a serverless backend. Financial data is securely stored in **Amazon RDS** located in a private subnet, connecting to a **NextJS** frontend through **AWS Amplify**. The entire solution is designed for flexible scaling, absolute security via the **AWS WAF** firewall layer, and centralized key management using **Secrets Manager**.
+
+## Workshop Content
+
+1. [Overview & Architecture](4.1-Overview/)
+2. [VPC Setup & Terraform Foundation](4.2-Infrastructure/)
+3. [Identity Deployment with Amazon Cognito](4.3-Cognito/)
+4. [Backend Containerization & ECS Fargate](4.4-Backend-ECS/)
+5. [Amazon RDS Configuration & Database](4.5-Database/)
+6. [Amplify Frontend Deployment & HTTPS](4.6-Frontend/)
+7. [CloudWatch Monitoring & Cleanup](4.7-Cleanup/)
 
 ## Cost Estimation
 
-The following table provides an estimated cost for maintaining the NutriTrack system on AWS. Please note that actual costs may vary based on usage levels and specific configurations.
+Below is an estimated monthly cost for maintaining the SpendWise system on AWS based on the recommended configuration.
 
-| Services             | Monthly Cost | Cost per Day |
-|----------------------|-------------:|-------------:|
-| Amazon Route 53      | $0.90        | $0.016       |
-| Amplify WAF          | $42.10       | $1.403       |
-| CloudFront           | $0.00        | $0.850       |
-| AWS Amplify          | $4.65        | $0.341       |
-| Fargate ARM64        | $10.23       | $0.254       |
-| ALB                  | $28.46       | $0.040       |
-| NAT Instance         | $7.63        | $0.2544      |
-| Amazon Cognito       | $0.00        | $0.016       |
-| AWS AppSync          | $3.11        | $0           |
-| AWS Lambda           | $0.00        | $0.008       |
-| Amazon Transcribe    | $6.57        | $0.010       |
-| Amazon Bedrock       | $147.57      | $0.001       |
-| Amazon S3            | $1.47        | $0           |
-| Amazon DynamoDB      | $0.13        | $0.007       |
-| CloudWatch           | $0.00        | $0           |
-| AWS Secrets Manager  | $1.20        | $0           |
-| **Total**            | **$254.02**  | **$2.94**    |
+| Service                               | Estimated Monthly Cost | Daily Cost  |
+|---------------------------------------|-----------------------:|------------:|
+| Application Load Balancer (ALB)       | $26.00                 | $0.866      |
+| Amazon ECS Fargate                    | $17.00                 | $0.566      |
+| Amazon RDS PostgreSQL                 | $23.50                 | $0.783      |
+| Amazon VPC Endpoints                  | $45.00                 | $1.500      |
+| AWS WAF                               | $6.00                  | $0.200      |
+| AWS Amplify                           | $4.50                  | $0.150      |
+| AWS Secrets Manager                   | $1.20                  | $0.040      |
+| Amazon Route 53                       | $0.90                  | $0.030      |
+| **Total**                             | **$124.10**            | **$4.135**  |
+
+---
 
 ## Conclusion
 
-By completing this workshop, you will have gained hands-on experience in building and deploying a complete full-stack application on AWS. You'll understand how to integrate various AWS services to create a scalable, secure, and cost-effective cloud solution that leverages modern technologies like serverless computing, containerization, and AI services.
+By completing this workshop, you will own an enterprise-grade **SpendWise** financial management system on AWS. This solution not only addresses performance and scalability but also lays a solid foundation for financial data security for end-users.

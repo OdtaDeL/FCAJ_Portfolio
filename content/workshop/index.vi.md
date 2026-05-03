@@ -1,70 +1,56 @@
----
-title: NutriTrack — Workshop Triển Khai Full-Stack Trên AWS
-slug: /workshop
-description: Workshop content: ﻿# NutriTrack — Workshop Triển Khai Full-Stack Trên AWS
-thumbnail: /images/workshop/default-thumbnail.png
-date: 2026-05-03
-tags: ["workshop"]
-category: workshop
-author: FCAJ Team
-status: published
----
-
 ## Overview
 
-_TBD._
+SpendWise là một ứng dụng web quản lý tài chính cá nhân hiện đại, giúp người dùng theo dõi và phân tích chi tiêu một cách trực quan. Hệ thống được triển khai trên AWS Cloud theo kiến trúc **3-tier**, đảm bảo tính bảo mật cao thông qua mạng riêng (VPC), xác thực người dùng tập trung (Cognito) và quản lý hạ tầng bằng mã nguồn (IaC).
 
 ## What You Will Learn
 
-_TBD._
+* Cách thiết lập hạ tầng mạng an toàn với **Amazon VPC**, chia Subnet Public/Private và cấu hình **VPC Endpoints**.
+* Triển khai ứng dụng container hóa bằng **Amazon ECS Fargate** kết hợp với **Application Load Balancer (ALB)**.
+* Quản lý định danh và xác thực người dùng với **Amazon Cognito**.
+* Vận hành và kết nối cơ sở dữ liệu quan hệ **Amazon RDS** trong mạng nội bộ an toàn.
+* Tự động hóa triển khai Frontend bằng **AWS Amplify** và bảo mật ứng dụng với **AWS WAF** & **Secrets Manager**.
 
 ## Requirements
 
-_TBD._
+* Tài khoản AWS (Free Tier hoặc có hạn mức sử dụng).
+* Kiến thức cơ bản về **NextJS** (Frontend) và **NestJS** (Backend).
+* Đã cài đặt Git và Terraform (để triển khai hạ tầng dạng mã nguồn).
 
 ## Content
 
-﻿# NutriTrack — Workshop Triển Khai Full-Stack Trên AWS
+# SpendWise — Workshop Triển Khai Full-Stack Trên AWS
 
 ## Tổng quan
-Hướng dẫn này cung cấp quy trình từng bước hoàn chỉnh để triển khai **NutriTrack** — hệ thống theo dõi dinh dưỡng và phân tích hình ảnh AI tự động trên AWS. Workshop tận dụng khung quản trị **AWS Amplify Gen 2** để thiết lập hạ tầng serverless cốt lõi bao gồm **Amazon Cognito** (Xác thực), **AWS AppSync** & **DynamoDB** (Dữ liệu), và **Amazon S3** (Lưu trữ). Hệ thống được mở rộng với tầng tính toán hiệu năng cao bằng **Amazon ECS Fargate** để xử lý các tác vụ thị giác máy tính và phân tích dinh dưỡng sâu qua **Amazon Bedrock**, kết nối linh hoạt với ứng dụng mobile **React Native**. Toàn bộ giải pháp được tích hợp quy trình **CI/CD** tự động, giúp tối ưu hóa việc triển khai từ giai đoạn phát triển đến vận hành thực tế trên môi trường cloud.
+Hướng dẫn này cung cấp quy trình từng bước hoàn chỉnh để triển khai **SpendWise** — hệ thống quản lý và phân tích tài chính cá nhân trên AWS. Workshop tập trung vào việc xây dựng hạ tầng vững chắc bằng **Terraform**, sử dụng **Amazon Cognito** để quản lý danh tính và **Amazon ECS Fargate** để vận hành backend serverless. Dữ liệu tài chính được lưu trữ an toàn trong **Amazon RDS** đặt tại subnet riêng tư, kết nối với frontend **NextJS** thông qua **AWS Amplify**. Toàn bộ giải pháp được thiết kế để chịu tải linh hoạt, bảo mật tuyệt đối qua lớp chặn **AWS WAF** và quản lý khóa tập trung bằng **Secrets Manager**.
 
 ## Nội dung thực hành
 
-1. [Tổng quan](4.1-Overview/)
-2. [Điều kiện tiên quyết](4.2-Prerequiste/)
-3. [Thiết lập Frontend](4.3-Frontend/)
-4. [Thiết lập Backend](4.4-Backend/)
-5. [Tầng Container ECS Fargate](4.5-ECS-Fargate/)
-6. [CI/CD](4.6-CICD/)
-7. [Dọn dẹp tài nguyên](4.7-Cleanup/)
+1. [Tổng quan & Kiến trúc](4.1-Overview/)
+2. [Thiết lập VPC & Terraform Foundation](4.2-Infrastructure/)
+3. [Triển khai Identity với Amazon Cognito](4.3-Cognito/)
+4. [Container hóa Backend & ECS Fargate](4.4-Backend-ECS/)
+5. [Cấu hình Amazon RDS & Cơ sở dữ liệu](4.5-Database/)
+6. [Triển khai Frontend Amplify & HTTPS](4.6-Frontend/)
+7. [Giám sát CloudWatch & Dọn dẹp](4.7-Cleanup/)
 
 ## Ước tính chi phí
 
-Dưới đây là bảng ước tính chi phí cho việc duy trì hệ thống NutriTrack trên AWS. Lưu ý rằng chi phí thực tế có thể thay đổi tùy thuộc vào mức độ sử dụng và cấu hình cụ thể.
+Dưới đây là bảng ước tính chi phí duy trì hệ thống SpendWise trên AWS dựa trên cấu hình đề xuất.
 
-| Dịch vụ              | Chi phí tháng | Chi phí/Ngày |
-|----------------------|-------------:|-------------:|
-| Amazon Route 53      | $0.90        | $0.016       |
-| Amplify WAF          | $42.10       | $1.403       |
-| CloudFront           | $0.00        | $0.850       |
-| AWS Amplify          | $4.65        | $0.341       |
-| Fargate ARM64        | $10.23       | $0.254       |
-| ALB                  | $28.46       | $0.040       |
-| NAT Instance         | $7.63        | $0.2544      |
-| Amazon Cognito       | $0.00        | $0.016       |
-| AWS AppSync          | $3.11        | $0           |
-| AWS Lambda           | $0.00        | $0.008       |
-| Amazon Transcribe    | $6.57        | $0.010       |
-| Amazon Bedrock       | $147.57      | $0.001       |
-| Amazon S3            | $1.47        | $0           |
-| Amazon DynamoDB      | $0.13        | $0.007       |
-| CloudWatch           | $0.00        | $0           |
-| AWS Secrets Manager  | $1.20        | $0           |
-| **Tổng cộng**        | **$254.02**  | **$2.94**    |
+| Dịch vụ               | Chi phí tháng (Ước tính) | Chi phí/Ngày |
+|-----------------------|-------------------------:|-------------:|
+| Application Load Balancer (ALB) | $26.00                | $0.866       |
+| Amazon ECS Fargate    | $17.00                   | $0.566       |
+| Amazon RDS PostgreSQL | $23.50                   | $0.783       |
+| Amazon VPC Endpoints  | $45.00                   | $1.500       |
+| AWS WAF               | $6.00                    | $0.200       |
+| AWS Amplify           | $4.50                    | $0.150       |
+| AWS Secrets Manager   | $1.20                    | $0.040       |
+| Amazon Route 53       | $0.90                    | $0.030       |
+| **Tổng cộng**         | **$124.10**              | **$4.135**   |
 
 ---
 
 ## Conclusion
 
-_TBD._
+Bằng cách hoàn thành workshop này, bạn sẽ sở hữu một hệ thống quản lý tài chính **SpendWise** đạt chuẩn doanh nghiệp trên AWS. Giải pháp không chỉ giải quyết bài toán hiệu năng và mở rộng mà còn đặt nền móng vững chắc về bảo mật dữ liệu tài chính cho người dùng cuối.
