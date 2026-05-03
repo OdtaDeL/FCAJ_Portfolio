@@ -1,3 +1,19 @@
+
+
+## Overview
+
+_TBD._
+
+## What You Will Learn
+
+_TBD._
+
+## Requirements
+
+_TBD._
+
+## Content
+
 ﻿Hàm này đóng vai trò trung gian (Proxy) để gửi các yêu cầu phân tích hình ảnh từ AppSync tới cụm **ECS Fargate** thông qua Application Load Balancer.
 
 ### 1. Cấu hình Tài nguyên (`resource.ts`)
@@ -494,3 +510,7 @@ export const handler = async (event: any) => {
 ---
 
 [Quay lại danh sách các hàm](../)
+
+## Conclusion
+
+_TBD._

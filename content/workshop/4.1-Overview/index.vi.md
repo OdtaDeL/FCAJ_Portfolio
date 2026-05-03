@@ -1,3 +1,36 @@
+
+
+## Overview
+
+_TBD._
+
+## What You Will Learn
+
+_TBD._
+
+## Requirements
+
+_TBD._
+
+## Content
+
+## Overview
+
+_TBD._
+
+
+## What You Will Learn
+
+_TBD._
+
+
+## Requirements
+
+_TBD._
+
+
+## Content
+
 ﻿## Giới thiệu 
 Workshop này được thiết kế để dẫn dắt bạn qua quy trình xây dựng và triển khai **NutriTrack** — một nền tảng theo dõi dinh dưỡng hiện đại, hội tụ sức mạnh của **AWS Amplify Gen 2**, **Amazon Bedrock** và **Amazon ECS Fargate**. Với nội dung bám sát 100% vào codebase thực tế đang vận hành, workshop không chỉ giúp bạn làm chủ hạ tầng serverless mà còn khai phá cách tích hợp các tác vụ AI hiệu năng cao vào ứng dụng thực tiễn một cách tối ưu.
 
@@ -34,3 +67,12 @@ Workshop này được thiết kế để dẫn dắt bạn qua quy trình xây 
 ---
 
 [Tiếp tục đến 4.2 Điều kiện tiên quyết](../4.2-Prerequiste/)
+
+
+## Conclusion
+
+_TBD._
+
+## Conclusion
+
+_TBD._

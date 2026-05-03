@@ -1,3 +1,19 @@
+
+
+## Overview
+
+_TBD._
+
+## What You Will Learn
+
+_TBD._
+
+## Requirements
+
+_TBD._
+
+## Content
+
 ﻿This section guides you through setting up three critical infrastructure components for the ECS Fargate cluster: **S3 Bucket** for caching, **Secrets Manager** for secure API key management, and **IAM Roles** for execution permissions.
 
 > **Prerequisite:** Completed [4.5.1 Network Infrastructure (VPC & Network)](../4.5.1-VPC-Network/).
@@ -56,3 +72,7 @@ ECS uses two distinct roles for different purposes:
 ## Next Steps:
 - [4.5.3 NAT Optimization (NAT Instance)](../4.5.3-NAT-Instance/)
 - [4.5.4 Fargate & ALB Deployment](../4.5.4-Fargate-ALB/)
+
+## Conclusion
+
+_TBD._

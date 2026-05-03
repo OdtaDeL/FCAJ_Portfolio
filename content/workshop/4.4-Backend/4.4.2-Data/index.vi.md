@@ -1,3 +1,19 @@
+
+
+## Overview
+
+_TBD._
+
+## What You Will Learn
+
+_TBD._
+
+## Requirements
+
+_TBD._
+
+## Content
+
 ﻿# AppSync & DynamoDB
 
 Định nghĩa lược đồ dữ liệu (Schema) và các quy tắc truy cập.
@@ -310,3 +326,7 @@ export const data = defineData({
 ---
 
 [Tiếp tục đến 4.4.3 Lớp Lưu trữ (Storage)](../4.4.3-Storage/)
+
+## Conclusion
+
+_TBD._

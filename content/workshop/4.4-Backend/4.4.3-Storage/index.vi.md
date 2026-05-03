@@ -1,3 +1,19 @@
+
+
+## Overview
+
+_TBD._
+
+## What You Will Learn
+
+_TBD._
+
+## Requirements
+
+_TBD._
+
+## Content
+
 ﻿# Lớp Lưu trữ — Amazon S3
 
 Quản lý hình ảnh và các tệp phương tiện.
@@ -39,3 +55,7 @@ export const storage = defineStorage({
 ---
 
 [Tiếp tục đến 4.4.4 Các hàm Logic (Functions)](../4.4.4-Functions/)
+
+## Conclusion
+
+_TBD._

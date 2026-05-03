@@ -1,3 +1,19 @@
+
+
+## Overview
+
+_TBD._
+
+## What You Will Learn
+
+_TBD._
+
+## Requirements
+
+_TBD._
+
+## Content
+
 ﻿This function acts as the "brain" of the application, responsible for interacting with **Amazon Bedrock** to analyze natural language and images.
 
 ### 1. Install Libraries (npm install)
@@ -644,3 +660,7 @@ export const handler = async (event: any) => {
 ---
 
 [Back to functions list](../)
+
+## Conclusion
+
+_TBD._

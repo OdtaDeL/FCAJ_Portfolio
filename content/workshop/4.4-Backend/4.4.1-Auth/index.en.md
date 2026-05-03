@@ -1,3 +1,19 @@
+
+
+## Overview
+
+_TBD._
+
+## What You Will Learn
+
+_TBD._
+
+## Requirements
+
+_TBD._
+
+## Content
+
 ﻿# Authentication Layer 
 
 Using Amazon Cognito for identity management.
@@ -59,3 +75,7 @@ The system will prompt you to enter values ​​for each variable (taken from t
 ---
 
 [Continue to 4.4.2 Data Layer (Data)](../4.4.2-Data/)
+
+## Conclusion
+
+_TBD._

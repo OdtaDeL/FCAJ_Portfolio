@@ -1,3 +1,18 @@
+
+## Overview
+
+_TBD._
+
+## What You Will Learn
+
+_TBD._
+
+## Requirements
+
+_TBD._
+
+## Content
+
 ﻿Chúng ta sẽ khởi tạo trái tim dữ liệu của NutriTrack bằng mã nguồn TypeScript.
 
 ## 1. Khởi tạo Thư mục Backend
@@ -42,3 +57,7 @@ Bây giờ, chúng ta sẽ lần lượt định nghĩa các tệp cấu hình c
 ---
 
 [Tiếp tục đến 4.5 Tầng Container ECS](../4.5-ECS-Fargate/)
+
+## Conclusion
+
+_TBD._

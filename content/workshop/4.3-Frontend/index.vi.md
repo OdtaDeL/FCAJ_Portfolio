@@ -1,4 +1,4 @@
-﻿## ReactNative & Expo
+## ReactNative & Expo
 
 Để thuận tiện cho việc thực hành, phần Frontend đã được chuẩn bị sẵn dưới dạng skeleton code hoàn chỉnh về giao diện và store. Bạn sẽ tiến hành tải mã nguồn và chuẩn bị môi trường chạy.
 

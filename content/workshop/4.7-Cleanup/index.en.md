@@ -1,3 +1,24 @@
+
+## Overview
+
+After completing the workshop, cleaning up your resources is a critical step to avoid unexpected AWS charges. Some resources, such as NAT Instances and ALBs, incur hourly costs even when not processing any traffic.
+
+## What You Will Learn
+
+- Proper resource deletion order to avoid dependency conflicts
+- Clean up ECS, ALB, and VPC resources
+- Remove Amplify backend and S3 storage
+- Delete IAM roles and CloudWatch logs
+- Understand cost implications of different AWS services
+
+## Requirements
+
+- Completed all workshop sections
+- AWS Console access with administrative permissions
+- Understanding of resource dependencies
+
+## Content
+
 ﻿After completing the workshop, cleaning up your resources is a critical step to avoid unexpected AWS charges. Some resources, such as NAT Instances and ALBs, incur hourly costs even when not processing any traffic.
 
 > [!IMPORTANT]
@@ -36,3 +57,7 @@ To avoid "Resource in use" errors, you should perform the deletion in order from
 Congratulations on successfully completing the NutriTrack deployment workshop on AWS! We hope the knowledge of Hybrid Architecture (Serverless + Container) and networking cost optimization will be valuable for your future real-world projects.
 
 [Back to Homepage](../../)
+
+## Conclusion
+
+Congratulations on successfully completing the NutriTrack deployment workshop on AWS! By following the cleanup procedures, you have safely removed all resources and avoided unnecessary charges. The knowledge gained about hybrid architecture (Serverless + Container) and networking cost optimization will be valuable for your future real-world projects.

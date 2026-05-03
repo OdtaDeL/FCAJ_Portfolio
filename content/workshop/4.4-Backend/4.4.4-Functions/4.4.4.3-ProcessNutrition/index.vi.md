@@ -1,3 +1,19 @@
+
+
+## Overview
+
+_TBD._
+
+## What You Will Learn
+
+_TBD._
+
+## Requirements
+
+_TBD._
+
+## Content
+
 ﻿Hàm này xử lý việc tính toán các chỉ số dinh dưỡng (Macros) và lưu trữ chúng trực tiếp vào bảng **DynamoDB**.
 
 ### 1. Cài đặt thư viện (npm install)
@@ -209,3 +225,7 @@ export const handler: Schema['processNutrition']['functionHandler'] = async (eve
 ---
 
 [Quay lại danh sách các hàm](../)
+
+## Conclusion
+
+_TBD._

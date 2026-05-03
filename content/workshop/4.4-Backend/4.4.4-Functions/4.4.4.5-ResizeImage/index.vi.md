@@ -1,3 +1,19 @@
+
+
+## Overview
+
+_TBD._
+
+## What You Will Learn
+
+_TBD._
+
+## Requirements
+
+_TBD._
+
+## Content
+
 ﻿Hàm này được kích hoạt tự động mỗi khi có hình ảnh được tải lên S3 để thu nhỏ kích thước (Resize) và tạo hình ảnh thu nhỏ (Thumbnail).
 
 ### 1. Cài đặt thư viện (npm install)
@@ -115,3 +131,7 @@ export const handler: S3Handler = async (event) => {
 ---
 
 [Quay lại danh sách các hàm](../)
+
+## Conclusion
+
+_TBD._

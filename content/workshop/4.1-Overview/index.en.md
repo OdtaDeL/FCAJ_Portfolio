@@ -1,4 +1,30 @@
-﻿## Introduction
+
+## Overview
+
+This workshop is designed to guide you through the process of building and deploying  — a modern nutrition tracking platform that combines the power of **AWS Amplify Gen 2**, **Amazon Bedrock**, and **Amazon ECS Fargate**. Based 100% on a real-world production codebase, this workshop will help you master serverless infrastructure and explore how to optimally integrate high-performance AI tasks into practical applications.
+
+## What You Will Learn
+
+- Design and deploy a full-stack AWS application using modern cloud services
+- Implement serverless architecture with AWS Amplify Gen 2
+- Set up authentication with Amazon Cognito
+- Build GraphQL APIs with AWS AppSync and DynamoDB
+- Deploy containerized applications with ECS Fargate
+- Integrate AI services using Amazon Bedrock
+- Establish CI/CD pipelines for automated deployment
+- Optimize costs and manage cloud resources effectively
+
+## Requirements
+
+- AWS Account with administrator access
+- Basic knowledge of AWS services and cloud computing
+- Experience with React Native development
+- Understanding of containerization and Docker
+- Familiarity with CI/CD concepts
+
+## Content
+
+## Introduction
 This workshop is designed to guide you through the process of building and deploying **NutriTrack** — a modern nutrition tracking platform that combines the power of **AWS Amplify Gen 2**, **Amazon Bedrock**, and **Amazon ECS Fargate**. Based 100% on a real-world production codebase, this workshop will help you master serverless infrastructure and explore how to optimally integrate high-performance AI tasks into practical applications.
 
 ## Overall Architecture
@@ -34,3 +60,7 @@ Here are the key components you will deploy throughout the Workshop:
 ---
 
 [Continue to 4.2 Prerequisites](../4.2-Prerequiste/)
+
+## Conclusion
+
+By understanding the overall architecture and components of NutriTrack, you're now prepared to dive into the practical implementation. This overview provides the foundation for understanding how each AWS service integrates to create a comprehensive, scalable nutrition tracking platform with AI capabilities.

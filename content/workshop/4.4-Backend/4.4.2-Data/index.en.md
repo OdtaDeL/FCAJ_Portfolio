@@ -1,3 +1,19 @@
+
+
+## Overview
+
+_TBD._
+
+## What You Will Learn
+
+_TBD._
+
+## Requirements
+
+_TBD._
+
+## Content
+
 ﻿Defining schema and access rules.
 
 ## `data/resource.ts`
@@ -305,3 +321,7 @@ export const data = defineData({
 ---
 
 [Continue to 4.4.3 Storage Layer (Storage)](../4.4.3-Storage/)
+
+## Conclusion
+
+_TBD._

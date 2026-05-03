@@ -1,4 +1,24 @@
-﻿# CI/CD — Automated Deployment
+
+## Overview
+
+In a production-grade AI project, CI/CD automation ensures that your Cloud infrastructure remains perfectly synchronized with your source code. We will use **AWS Amplify Console** connected directly to your GitHub repository.
+
+## What You Will Learn
+
+- Set up GitHub integration with AWS Amplify Console
+- Configure build specifications for backend and frontend
+- Optimize dependency management for React 19 and Expo 54
+- Implement branch strategy for multiple environments
+- Sync local development with cloud deployments
+
+## Requirements
+
+- Completed ECS Fargate Setup section
+- GitHub repository with workshop code
+- AWS Amplify Console access
+- Understanding of CI/CD concepts
+
+## Content
 
 In a production-grade AI project, CI/CD automation ensures that your Cloud infrastructure remains perfectly synchronized with your source code. We will use **AWS Amplify Console** connected directly to your GitHub repository.
 
@@ -124,3 +144,7 @@ npx ampx generate outputs --branch <branch-name> --app-id <your-app-id>
 ---
 
 [Continue to 4.7 Resource Cleanup](../4.7-Cleanup/)
+
+## Conclusion
+
+By implementing the CI/CD pipeline, you have established a robust automated deployment system that keeps your cloud infrastructure synchronized with your source code. This setup ensures consistent deployments across environments and enables efficient collaboration through GitHub integration, completing the production-ready architecture for NutriTrack.

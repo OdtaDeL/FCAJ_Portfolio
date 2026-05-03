@@ -1,3 +1,19 @@
+
+
+## Overview
+
+_TBD._
+
+## What You Will Learn
+
+_TBD._
+
+## Requirements
+
+_TBD._
+
+## Content
+
 ﻿Phần này hướng dẫn thiết lập ba thành phần hạ tầng quan trọng hỗ trợ cho cụm ECS Fargate: **S3 Bucket** để lưu trữ cache, **Secrets Manager** để quản lý API keys bảo mật, và **IAM Roles** để cấp quyền thực thi.
 
 > **Điều kiện tiên quyết:** Đã hoàn thành [4.5.1 Hạ tầng Mạng (VPC & Network)](../4.5.1-VPC-Network/).
@@ -92,3 +108,7 @@ ECS sử dụng hai Role riêng biệt cho hai mục đích khác nhau:
 Hạ tầng nền tảng đã sẵn sàng. Bây giờ chúng ta sẽ tối ưu hóa chi phí đường truyền internet:
 - [4.5.3 Tối ưu hóa NAT (NAT Instance)](../4.5.3-NAT-Instance/)
 - [4.5.4 Triển khai Fargate & ALB](../4.5.4-Fargate-ALB/)
+
+## Conclusion
+
+_TBD._

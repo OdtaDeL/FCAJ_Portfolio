@@ -1,3 +1,19 @@
+
+
+## Overview
+
+_TBD._
+
+## What You Will Learn
+
+_TBD._
+
+## Requirements
+
+_TBD._
+
+## Content
+
 ﻿Hàm này quản lý các logic phức tạp liên quan đến hệ thống bạn bè, bao gồm gửi yêu cầu, chấp nhận và quản lý liên kết giữa người dùng.
 
 ### 1. Cài đặt thư viện (npm install)
@@ -405,3 +421,7 @@ async function countPendingRequests(tableName: string, callerOwner: string) {
 ---
 
 [Quay lại danh sách các hàm](../)
+
+## Conclusion
+
+_TBD._

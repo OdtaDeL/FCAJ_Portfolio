@@ -1,3 +1,18 @@
+
+## Overview
+
+_TBD._
+
+## What You Will Learn
+
+_TBD._
+
+## Requirements
+
+_TBD._
+
+## Content
+
 ﻿Sau khi hoàn thành workshop, việc dọn dẹp tài nguyên là bước tối quan trọng để tránh các chi phí phát sinh ngoài ý muốn từ AWS. Một số tài nguyên như NAT Instances và ALB sẽ tính phí theo giờ ngay cả khi không có lưu lượng truy cập.
 
 > [!IMPORTANT]
@@ -36,3 +51,7 @@
 Chúc mừng bạn đã hoàn thành trọn vẹn workshop triển khai hệ thống NutriTrack trên AWS! Hy vọng những kiến thức về Hybrid Architecture (Serverless + Container) và tối ưu hóa chi phí mạng sẽ giúp ích cho các dự án thực tế của bạn.
 
 [Quay lại trang chủ](../../)
+
+## Conclusion
+
+_TBD._

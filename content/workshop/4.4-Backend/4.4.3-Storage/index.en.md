@@ -1,3 +1,19 @@
+
+
+## Overview
+
+_TBD._
+
+## What You Will Learn
+
+_TBD._
+
+## Requirements
+
+_TBD._
+
+## Content
+
 ﻿Managing images and media assets.
 
 ## `storage/resource.ts`
@@ -35,3 +51,7 @@ export const storage = defineStorage({
 ---
 
 [Continue to 4.4.4 Logic Functions (Functions)](../4.4.4-Functions/)
+
+## Conclusion
+
+_TBD._

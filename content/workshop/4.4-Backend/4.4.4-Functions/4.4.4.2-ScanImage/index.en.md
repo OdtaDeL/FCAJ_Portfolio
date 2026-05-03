@@ -1,3 +1,19 @@
+
+
+## Overview
+
+_TBD._
+
+## What You Will Learn
+
+_TBD._
+
+## Requirements
+
+_TBD._
+
+## Content
+
 ﻿This function acts as a proxy (intermediary) to send image analysis requests from AppSync to the **ECS Fargate** cluster via an Application Load Balancer.
 
 ### 1. Resource Configuration (`resource.ts`)
@@ -493,3 +509,7 @@ export const handler = async (event: any) => {
 ---
 
 [Back to functions list](../)
+
+## Conclusion
+
+_TBD._

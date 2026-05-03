@@ -1,3 +1,19 @@
+
+
+## Overview
+
+_TBD._
+
+## What You Will Learn
+
+_TBD._
+
+## Requirements
+
+_TBD._
+
+## Content
+
 ﻿Lambda functions orchestrate business logic and AI integrations. In Amplify Gen 2, each function is defined in its own directory within `amplify/functions/`.
 
 ## Core Project Functions
@@ -37,3 +53,7 @@ Create the following files and paste the provided skeleton code for each functio
 ---
 
 [Continue to 4.5 ECS Fargate Tier](../4.5-ECS-Fargate/)
+
+## Conclusion
+
+_TBD._

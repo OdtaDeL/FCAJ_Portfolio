@@ -1,3 +1,18 @@
+
+## Overview
+
+_TBD._
+
+## What You Will Learn
+
+_TBD._
+
+## Requirements
+
+_TBD._
+
+## Content
+
 ﻿Đây là bước cuối cùng để hoàn thiện hệ thống: Build Docker image, đẩy lên registry, và thiết lập cụm ECS Fargate cùng Application Load Balancer (ALB) để phục vụ các yêu cầu từ internet.
 
 ## 1. Build & Push Docker Image
@@ -92,3 +107,7 @@ Hệ thống của bạn hiện đã hoàn thiện:
 ---
 
 [Tiếp tục đến 4.6 CI/CD](../../4.6-CICD/)
+
+## Conclusion
+
+_TBD._

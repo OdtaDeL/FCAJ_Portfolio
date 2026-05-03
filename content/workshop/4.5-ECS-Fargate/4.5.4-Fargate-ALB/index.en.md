@@ -1,3 +1,19 @@
+
+
+## Overview
+
+_TBD._
+
+## What You Will Learn
+
+_TBD._
+
+## Requirements
+
+_TBD._
+
+## Content
+
 ﻿This is the final step to complete the system: Build the Docker image, push it to a registry, and set up the ECS Fargate cluster and Application Load Balancer (ALB) to handle internet traffic.
 
 ## 1. Build & Push Docker Image
@@ -85,3 +101,7 @@ Your system is now complete:
 ---
 
 [Continue to 4.6 CI/CD](../../4.6-CICD/)
+
+## Conclusion
+
+_TBD._

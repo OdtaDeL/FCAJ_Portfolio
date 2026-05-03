@@ -1,3 +1,26 @@
+
+
+## Overview
+
+The ECS Fargate layer runs a containerized FastAPI service in parallel with the Amplify serverless backend. It handles tasks not suitable for Lambda, such as long-running data processing, custom AI inference, or processes requiring persistent connections.
+
+## What You Will Learn
+
+- Deploy containerized applications with ECS Fargate
+- Set up FastAPI services for AI inference
+- Configure networking and load balancing
+- Integrate containers with serverless architecture
+- Optimize for long-running tasks and persistent connections
+
+## Requirements
+
+- Completed Backend Setup section
+- Docker Desktop installed
+- Understanding of containerization concepts
+- Basic knowledge of FastAPI or Python web frameworks
+
+## Content
+
 The ECS Fargate layer runs a containerized FastAPI service in parallel with the Amplify serverless backend. It handles tasks not suitable for Lambda, such as long-running data processing, custom AI inference, or processes requiring persistent connections.
 
 ## System Architecture
@@ -29,3 +52,7 @@ The ECS tasks run in a **Private Subnet** for security, while an **Application L
 ---
 
 [Continue to 4.6 CI/CD Deployment](../4.6-CICD/)
+
+## Conclusion
+
+By implementing the ECS Fargate layer, you have successfully deployed a containerized FastAPI service that complements the serverless Amplify backend. This hybrid architecture allows NutriTrack to handle both lightweight Lambda functions and resource-intensive containerized tasks, providing a scalable and cost-effective solution for AI-powered nutrition tracking.

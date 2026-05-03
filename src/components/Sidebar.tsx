@@ -65,8 +65,25 @@ const navigation: NavItem[] = [
         icon: Wrench,
         children: [
             { id: 'ws-overview', path: '/workshop/4.1-Overview', label: { en: '4.1 Overview', vi: '4.1 Tổng Quan' }, icon: ChevronRight },
-            { id: 'ws-prereq', path: '/workshop/4.2-Prerequiste', label: { en: '4.2 Prerequisites', vi: '4.2 Điều Kiện' }, icon: ChevronRight },
-            { id: 'ws-frontend', path: '/workshop/4.3-Frontend', label: { en: '4.3 Frontend Setup', vi: '4.3 Thiết Lập Frontend' }, icon: ChevronRight },
+            {
+                id: 'ws-prereq', path: '/workshop/4.2-Prerequiste', label: { en: '4.2 Prerequisites', vi: '4.2 Điều Kiện Tiên Quyết' }, icon: ChevronRight,
+                children: [
+                    { id: 'ws-4.2.1', path: '/workshop/4.2-Prerequiste/4.2.1-vpc-network', label: { en: '4.2.1 VPC Network', vi: '4.2.1 Mạng VPC' }, icon: ChevronRight },
+                    { id: 'ws-4.2.2', path: '/workshop/4.2-Prerequiste/4.2.2-client-facing', label: { en: '4.2.2 Client Facing', vi: '4.2.2 Client Facing' }, icon: ChevronRight },
+                    { id: 'ws-4.2.3', path: '/workshop/4.2-Prerequiste/4.2.3-backend-platform', label: { en: '4.2.3 Backend Platform', vi: '4.2.3 Nền Tảng Backend' }, icon: ChevronRight },
+                    { id: 'ws-4.2.4', path: '/workshop/4.2-Prerequiste/4.2.4-database', label: { en: '4.2.4 Database', vi: '4.2.4 Cơ Sở Dữ Liệu' }, icon: ChevronRight },
+                ]
+            },
+            {
+                id: 'ws-frontend', path: '/workshop/4.3-Frontend', label: { en: '4.3 Frontend Setup', vi: '4.3 Thiết Lập Frontend' }, icon: ChevronRight,
+                children: [
+                    { id: 'ws-4.3.1', path: '/workshop/4.3-Frontend/4.3.1-vpc-network', label: { en: '4.3.1 VPC Network', vi: '4.3.1 Mạng VPC' }, icon: ChevronRight },
+                    { id: 'ws-4.3.2', path: '/workshop/4.3-Frontend/4.3.2-frontend-hosting-auth', label: { en: '4.3.2 Frontend Hosting & Auth', vi: '4.3.2 Hosting & Xác Thực' }, icon: ChevronRight },
+                    { id: 'ws-4.3.3', path: '/workshop/4.3-Frontend/4.3.3-backend', label: { en: '4.3.3 Backend Integration', vi: '4.3.3 Kết Nối Backend' }, icon: ChevronRight },
+                    { id: 'ws-4.3.4', path: '/workshop/4.3-Frontend/4.3.4-database', label: { en: '4.3.4 Database', vi: '4.3.4 Cơ Sở Dữ Liệu' }, icon: ChevronRight },
+                    { id: 'ws-4.3.5', path: '/workshop/4.3-Frontend/4.3.5-platform-edge-ops', label: { en: '4.3.5 Platform & Edge Ops', vi: '4.3.5 Platform & Edge Ops' }, icon: ChevronRight },
+                ]
+            },
             {
                 id: 'ws-backend', path: '/workshop/4.4-Backend', label: { en: '4.4 Backend Setup', vi: '4.4 Thiết Lập Backend' }, icon: ChevronRight,
                 children: [
@@ -74,13 +91,13 @@ const navigation: NavItem[] = [
                     { id: 'ws-4.4.2', path: '/workshop/4.4-Backend/4.4.2-Data', label: { en: '4.4.2 Data Layer', vi: '4.4.2 Lớp Dữ Liệu' }, icon: ChevronRight },
                     { id: 'ws-4.4.3', path: '/workshop/4.4-Backend/4.4.3-Storage', label: { en: '4.4.3 Storage Layer', vi: '4.4.3 Lớp Lưu Trữ' }, icon: ChevronRight },
                     {
-                        id: 'ws-4.4.4', path: '/workshop/4.4-Backend/4.4.4-Functions', label: { en: '4.4.4 Lambda Functions', vi: '4.4.4 Hàm Lambda' }, icon: ChevronRight,
+                        id: 'ws-4.4.4', path: '/workshop/4.4-Backend/4.4.4-Functions', label: { en: '4.4.4 Lambda Functions', vi: '4.4.4 Các Hàm Lambda' }, icon: ChevronRight,
                         children: [
-                            { id: 'ws-4.4.4.1', path: '/workshop/4.4-Backend/4.4.4-Functions/4.4.4.1-AIEngine', label: { en: '4.4.4.1 ai-engine', vi: '4.4.4.1 ai-engine' }, icon: ChevronRight },
-                            { id: 'ws-4.4.4.2', path: '/workshop/4.4-Backend/4.4.4-Functions/4.4.4.2-ScanImage', label: { en: '4.4.4.2 scan-image', vi: '4.4.4.2 scan-image' }, icon: ChevronRight },
-                            { id: 'ws-4.4.4.3', path: '/workshop/4.4-Backend/4.4.4-Functions/4.4.4.3-ProcessNutrition', label: { en: '4.4.4.3 process-nutrition', vi: '4.4.4.3 process-nutrition' }, icon: ChevronRight },
-                            { id: 'ws-4.4.4.4', path: '/workshop/4.4-Backend/4.4.4-Functions/4.4.4.4-FriendRequest', label: { en: '4.4.4.4 friend-request', vi: '4.4.4.4 friend-request' }, icon: ChevronRight },
-                            { id: 'ws-4.4.4.5', path: '/workshop/4.4-Backend/4.4.4-Functions/4.4.4.5-ResizeImage', label: { en: '4.4.4.5 resize-image', vi: '4.4.4.5 resize-image' }, icon: ChevronRight },
+                            { id: 'ws-4.4.4.1', path: '/workshop/4.4-Backend/4.4.4-Functions/4.4.4.1-AIEngine', label: { en: '4.4.4.1 AI Engine (Bedrock)', vi: '4.4.4.1 AI Engine (Bedrock)' }, icon: ChevronRight },
+                            { id: 'ws-4.4.4.2', path: '/workshop/4.4-Backend/4.4.4-Functions/4.4.4.2-ScanImage', label: { en: '4.4.4.2 Scan Image', vi: '4.4.4.2 Scan Image' }, icon: ChevronRight },
+                            { id: 'ws-4.4.4.3', path: '/workshop/4.4-Backend/4.4.4-Functions/4.4.4.3-ProcessNutrition', label: { en: '4.4.4.3 Process Nutrition', vi: '4.4.4.3 Xử Lý Dinh Dưỡng' }, icon: ChevronRight },
+                            { id: 'ws-4.4.4.4', path: '/workshop/4.4-Backend/4.4.4-Functions/4.4.4.4-FriendRequest', label: { en: '4.4.4.4 Friend Request', vi: '4.4.4.4 Kết Bạn' }, icon: ChevronRight },
+                            { id: 'ws-4.4.4.5', path: '/workshop/4.4-Backend/4.4.4-Functions/4.4.4.5-ResizeImage', label: { en: '4.4.4.5 Resize Image', vi: '4.4.4.5 Resize Image' }, icon: ChevronRight },
                         ]
                     },
                 ]

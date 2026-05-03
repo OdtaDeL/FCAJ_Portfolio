@@ -1,3 +1,29 @@
+---
+title: NutriTrack — Workshop Triển Khai Full-Stack Trên AWS
+slug: /workshop
+description: Workshop content: ﻿# NutriTrack — Workshop Triển Khai Full-Stack Trên AWS
+thumbnail: /images/workshop/default-thumbnail.png
+date: 2026-05-03
+tags: ["workshop"]
+category: workshop
+author: FCAJ Team
+status: published
+---
+
+## Overview
+
+_TBD._
+
+## What You Will Learn
+
+_TBD._
+
+## Requirements
+
+_TBD._
+
+## Content
+
 ﻿# NutriTrack — Workshop Triển Khai Full-Stack Trên AWS
 
 ## Tổng quan
@@ -38,3 +64,7 @@ Dưới đây là bảng ước tính chi phí cho việc duy trì hệ thống 
 | **Tổng cộng**        | **$254.02**  | **$2.94**    |
 
 ---
+
+## Conclusion
+
+_TBD._

@@ -1,3 +1,18 @@
+
+## Overview
+
+_TBD._
+
+## What You Will Learn
+
+_TBD._
+
+## Requirements
+
+_TBD._
+
+## Content
+
 Tầng ECS Fargate chạy một FastAPI service được container hóa song song với backend Amplify serverless. Nó xử lý các tác vụ không phù hợp với Lambda như: xử lý dữ liệu kéo dài, suy luận AI tùy chỉnh, hoặc các tiến trình cần duy trì kết nối liên tục.
 
 ## Kiến trúc Hệ thống
@@ -29,3 +44,7 @@ Các ECS task chạy trong **Private Subnet** để đảm bảo an ninh; **Appl
 ---
 
 [Tiếp tục đến 4.6 CI/CD](../4.6-CICD/)
+
+## Conclusion
+
+_TBD._

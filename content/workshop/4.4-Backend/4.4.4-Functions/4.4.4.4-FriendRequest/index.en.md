@@ -1,3 +1,18 @@
+
+## Overview
+
+_TBD._
+
+## What You Will Learn
+
+_TBD._
+
+## Requirements
+
+_TBD._
+
+## Content
+
 ﻿This function manages complex logic related to the friendship system, including sending requests, accepting them, and managing links between users.
 
 ### 1. Install Libraries (npm install)
@@ -407,3 +422,7 @@ async function countPendingRequests(tableName: string, callerOwner: string) {
 ---
 
 [Back to functions list](../)
+
+## Conclusion
+
+_TBD._

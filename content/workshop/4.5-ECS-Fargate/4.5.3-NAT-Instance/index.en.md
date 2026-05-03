@@ -1,3 +1,19 @@
+
+
+## Overview
+
+_TBD._
+
+## What You Will Learn
+
+_TBD._
+
+## Requirements
+
+_TBD._
+
+## Content
+
 ﻿In an AWS environment, resources in a Private Subnet (like ECS Tasks) typically need a NAT Gateway to access the internet. However, NAT Gateway has a high fixed cost (~$32/mo). In this workshop, we use a **NAT Instance** to save up to 70% in costs.
 
 > **Prerequisite:** Completed [VPC & Network](../4.5.1-VPC-Network/) and [Infrastructure](../4.5.2-Infrastructure/).
@@ -64,3 +80,7 @@ The ASG will automatically detect instance failure and launch a replacement. You
 
 ## Next Steps:
 - [4.5.4 Fargate & ALB Deployment](../4.5.4-Fargate-ALB/)
+
+## Conclusion
+
+_TBD._

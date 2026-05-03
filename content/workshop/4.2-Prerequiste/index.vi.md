@@ -1,3 +1,29 @@
+---
+title: Các yêu cầu về truy cập và thông tin
+slug: /workshop/4.2-prerequiste/
+description: Workshop content: ﻿## Các yêu cầu về truy cập và thông tin
+thumbnail: /images/workshop/default-thumbnail.png
+date: 2026-05-03
+tags: ["workshop"]
+category: workshop
+author: FCAJ Team
+status: published
+---
+
+## Overview
+
+_TBD._
+
+## What You Will Learn
+
+_TBD._
+
+## Requirements
+
+_TBD._
+
+## Content
+
 ﻿## Các yêu cầu về truy cập và thông tin
 Trước khi bắt đầu, hãy đảm bảo bạn có đầy đủ các công cụ và quyền truy cập sau đây:
 
@@ -25,3 +51,7 @@ Tải ứng dụng **Expo Go** từ App Store hoặc Play Store để có thể 
 ---
 
 [Tiếp tục đến 4.3 Thiết lập Frontend](../4.3-Frontend/)
+
+## Conclusion
+
+_TBD._

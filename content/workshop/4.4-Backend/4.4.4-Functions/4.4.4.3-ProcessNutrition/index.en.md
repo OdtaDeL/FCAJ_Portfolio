@@ -1,3 +1,19 @@
+
+
+## Overview
+
+_TBD._
+
+## What You Will Learn
+
+_TBD._
+
+## Requirements
+
+_TBD._
+
+## Content
+
 ﻿This function handles the calculation of nutritional macros and stores them directly into the **DynamoDB** table.
 
 ### 1. Install Libraries (npm install)
@@ -209,3 +225,7 @@ export const handler: Schema['processNutrition']['functionHandler'] = async (eve
 ---
 
 [Back to functions list](../)
+
+## Conclusion
+
+_TBD._
