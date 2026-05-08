@@ -190,16 +190,10 @@ const WORKSHOP_SECTIONS: WorkshopSection[] = [
     ],
   },
   {
-    id: "4.6-CICD",
-    folderName: "4.6-CICD",
-    en: "4.6 CI/CD",
-    vi: "4.6 CI/CD",
-  },
-  {
-    id: "4.7-Cleanup",
-    folderName: "4.7-Cleanup",
-    en: "4.7 Cleanup",
-    vi: "4.7 Dọn Dẹp",
+    id: "4.6-Cleanup",
+    folderName: "4.6-Cleanup",
+    en: "4.6 Cleanup",
+    vi: "4.6 Dọn Dẹp",
   },
 ];
 

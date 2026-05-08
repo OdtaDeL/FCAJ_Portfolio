@@ -111,8 +111,7 @@ const navigation: NavItem[] = [
                     { id: 'ws-4.5.4', path: '/workshop/4.5-ECS-Fargate/4.5.4-Fargate-ALB', label: { en: '4.5.4 Fargate & ALB', vi: '4.5.4 Fargate & ALB' }, icon: ChevronRight },
                 ]
             },
-            { id: 'ws-cicd', path: '/workshop/4.6-CICD', label: { en: '4.6 CI/CD', vi: '4.6 CI/CD' }, icon: ChevronRight },
-            { id: 'ws-cleanup', path: '/workshop/4.7-Cleanup', label: { en: '4.7 Cleanup', vi: '4.7 Dọn Dẹp' }, icon: ChevronRight },
+            { id: 'ws-cleanup', path: '/workshop/4.6-Cleanup', label: { en: '4.6 Cleanup', vi: '4.6 Dọn Dẹp' }, icon: ChevronRight },
         ],
     },
     { id: 'evaluation', path: '/evaluation', label: { en: '5. Self-Evaluation', vi: '5. Tự Đánh Giá' }, icon: CheckCircle },
@@ -153,8 +152,7 @@ const searchableContent = [
     { label: '4.5.2 Infrastructure', path: '/workshop/4.5-ECS-Fargate/4.5.2-Infrastructure', keywords: ['s3 bucket', 'secrets manager', 'iam roles', 'ecs task role'] },
     { label: '4.5.3 NAT Optimization', path: '/workshop/4.5-ECS-Fargate/4.5.3-NAT-Instance', keywords: ['nat instance', 'iptables', 'masquerade', 't4g.nano', 'ip forwarding'] },
     { label: '4.5.4 Fargate & ALB', path: '/workshop/4.5-ECS-Fargate/4.5.4-Fargate-ALB', keywords: ['fargate', 'alb', 'autoscaling', 'task definition', 'jwt', 'ecr'] },
-    { label: '4.6 CI/CD', path: '/workshop/4.6-CICD', keywords: ['cicd', 'github actions', 'amplify hosting', 'pipeline', 'ecr push'] },
-    { label: '4.7 Cleanup', path: '/workshop/4.7-Cleanup', keywords: ['cleanup', 'delete', 'teardown', 'amplify destroy'] },
+    { label: '4.6 Cleanup', path: '/workshop/4.6-Cleanup', keywords: ['cleanup', 'delete', 'teardown', 'amplify destroy'] },
     { label: 'Self-Evaluation', path: '/evaluation', keywords: ['assessment', 'criteria', 'rating', 'good', 'fair'] },
     { label: 'Sharing & Feedback', path: '/feedback', keywords: ['feelings', 'satisfaction', 'recommend', 'knowledge'] },
 ];
