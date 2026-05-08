@@ -45,9 +45,8 @@ The database is hosted in a Private Subnet to ensure financial data is never exp
 
 ### 2. Logic & Compute Layer
 1. **`ECS Fargate (NestJS)`**: The core backend engine handling business logic and API requests.
-2. **`AWS Lambda`**: Handles post-confirmation triggers to sync Cognito users with the RDS database.
-3. **`Application Load Balancer (ALB)`**: Distributes traffic to the ECS backend and handles SSL termination.
-4. **`Bastion Host`**: Provides a secure "jump box" for administrators to manage the private RDS instance.
+2. **`Application Load Balancer (ALB)`**: Distributes traffic to the ECS backend and handles SSL termination.
+3. **`Bastion Host`**: Provides a secure "jump box" for administrators to manage the private RDS instance.
 
 ### 3. Key Features & Security
 * **Infrastructure as Code**: 100% of the environment is managed via **Terraform** for reliability.

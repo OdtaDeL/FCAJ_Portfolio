@@ -109,7 +109,7 @@ resource "aws_security_group" "rds" {
 | **Internet gateway** | Cho **subnet public** đường ra/vào Internet (ALB, đặt NAT). |
 | **Subnet public (2 AZ)** | Chứa thành phần hướng Internet (ALB, bastion có public IP nếu bật). Một subnet cũng là chỗ đặt **NAT Gateway**. |
 | **Subnet private app (2 AZ)** | Chạy **ECS Fargate** (mặc định không gán public IP) — tầng ứng dụng. |
-| **Subnet private data (2 AZ)** | Đặt **RDS** và **Lambda** trong VPC (ví dụ trigger sau xác nhận Cognito) — tầng dữ liệu, không expose trực tiếp ra Internet. |
+| **Subnet private data (2 AZ)** | Đặt **RDS** trong VPC — tầng dữ liệu, không expose trực tiếp ra Internet. |
 | **EIP + NAT Gateway** (khi enable_nat_gateway = true) | Cho subnet private **đi ra ngoài** có kiểm soát (pull image, gọi API AWS…). Biến enable_nat_gateway trong environments/dev/variables.tf ghi chú: NAT phục vụ ECS/ECR và outbound. |
 | **Route table** | Public → IGW; private → NAT nếu có NAT; khi tắt NAT, private dùng RT cô lập (không default route Internet — tiết kiệm/thử nghiệm nhưng hạn chế egress). |
 

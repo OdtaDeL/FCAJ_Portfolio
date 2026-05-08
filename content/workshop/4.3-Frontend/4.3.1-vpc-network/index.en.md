@@ -110,7 +110,7 @@ resource "aws_security_group" "rds" {
 | **Internet gateway** | Gives **public subnets** a path to/from the internet (ALB, NAT placement). |
 | **Public subnets (×2 AZs)** | Host internet-facing components (ALB, optional bastion with public IP). One subnet also anchors the **NAT Gateway**. |
 | **Private app subnets (×2)** | Where **ECS Fargate** tasks run without public IPs by default — application tier. |
-| **Private data subnets (×2)** | Where **RDS** and VPC-attached **Lambda** (e.g. Cognito post-confirmation) live — data tier, no direct internet exposure. |
+| **Private data subnets (×2)** | Where **RDS** lives — data tier, no direct internet exposure. |
 | **Elastic IP + NAT Gateway** (when enable_nat_gateway = true) | Lets private subnets initiate **outbound** traffic (e.g. pull images, call AWS APIs) via a single controlled egress. Variable enable_nat_gateway in environments/dev/variables.tf documents the intent: NAT for ECS/ECR pull patterns. |
 | **Route tables** | Public RT → IGW; private RT → NAT when NAT is on; without NAT, private subnets use isolated RTs (no default route to internet — useful for cost/experiments, but limits outbound). |
 

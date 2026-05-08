@@ -5,7 +5,7 @@ SpendWiseApp/infrastructure/environments/dev/main.tf triển khai **module "ampl
 
 ### Mã — Amplify + Cognito (environments/dev/main.tf)
 
-build_spec nhúng chỉ rõ monorepo **appRoot: frontend**, artifact .next. NEXT_PUBLIC_API_URL trỏ DNS của ALB (http/https tùy ACM). Lambda post-confirmation và VPC của Cognito chỉ bật khi create_rds = true.
+build_spec nhúng chỉ rõ monorepo **appRoot: frontend**, artifact .next. NEXT_PUBLIC_API_URL trỏ DNS của ALB (http/https tùy ACM).
 
 ```terraform
 # SpendWiseApp/infrastructure/environments/dev/main.tf (trích)
@@ -50,11 +50,6 @@ module "cognito" {
 
   project_name = var.project_name
   environment  = var.environment
-
-  enable_post_confirmation_trigger = var.create_rds
-  post_confirmation_database_url   = local.cognito_post_confirmation_database_url
-  post_confirmation_subnet_ids     = module.vpc.private_data_subnet_ids
-  post_confirmation_security_group_ids = [module.security_groups.ecs_tasks_security_group_id]
 }
 ```
 
@@ -84,11 +79,10 @@ amplify_access_token và thông tin nhạy cảm đặt trong terraform.tfvars h
 
 | Tài nguyên | Để làm gì |
 |------------|-----------|
-| **aws_cognito_user_pool** | Người dùng theo email, chính sách mật khẩu, tùy chọn trigger **Lambda post-confirmation**. |
+| **aws_cognito_user_pool** | Người dùng theo email và chính sách mật khẩu cho luồng auth frontend. |
 | **aws_cognito_user_pool_client (web)** | Client SPA công khai: generate_secret = false, luồng SRP / password / refresh cho frontend. |
-| **Lambda post-confirmation** (khi create_rds = true ở dev) | Sau khi xác nhận email, **ghi/cập nhật user vào PostgreSQL** đồng bộ với Cognito. Chạy trong **subnet private data**, dùng **cùng SG với ECS task** để vào RDS (post_confirmation_security_group_ids). Khi create_rds = false thì tắt trigger để có auth mà chưa tốn RDS. |
 
-Module còn có **IAM role**, gắn **VPC access** cho Lambda, **archive_file** đóng gói, **null_resource** chạy npm install dependency Lambda lúc apply.
+Module còn có cấu hình domain/hosted UI và các quyền IAM cần thiết để tích hợp Cognito với ứng dụng.
 
 ### Tùy chọn: Route 53 zone cho custom domain Amplify
 

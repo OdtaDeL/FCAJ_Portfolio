@@ -120,40 +120,8 @@ const WORKSHOP_SECTIONS: WorkshopSection[] = [
       {
         id: "4.4.4-Functions",
         folderName: "4.4-Backend/4.4.4-Functions",
-        en: "4.4.4 Lambda Functions",
-        vi: "4.4.4 Các Hàm Lambda",
-        children: [
-          {
-            id: "4.4.4.1-AIEngine",
-            folderName: "4.4-Backend/4.4.4-Functions/4.4.4.1-AIEngine",
-            en: "4.4.4.1 AI Engine (Bedrock)",
-            vi: "4.4.4.1 AI Engine (Bedrock)",
-          },
-          {
-            id: "4.4.4.2-ScanImage",
-            folderName: "4.4-Backend/4.4.4-Functions/4.4.4.2-ScanImage",
-            en: "4.4.4.2 Scan Image",
-            vi: "4.4.4.2 Scan Image",
-          },
-          {
-            id: "4.4.4.3-ProcessNutrition",
-            folderName: "4.4-Backend/4.4.4-Functions/4.4.4.3-ProcessNutrition",
-            en: "4.4.4.3 Process Nutrition",
-            vi: "4.4.4.3 Xử Lý Dinh Dưỡng",
-          },
-          {
-            id: "4.4.4.4-FriendRequest",
-            folderName: "4.4-Backend/4.4.4-Functions/4.4.4.4-FriendRequest",
-            en: "4.4.4.4 Friend Request",
-            vi: "4.4.4.4 Kết Bạn",
-          },
-          {
-            id: "4.4.4.5-ResizeImage",
-            folderName: "4.4-Backend/4.4.4-Functions/4.4.4.5-ResizeImage",
-            en: "4.4.4.5 Resize Image",
-            vi: "4.4.4.5 Resize Image",
-          },
-        ],
+        en: "4.4.4 REST APIs",
+        vi: "4.4.4 REST APIs",
       },
     ],
   },
@@ -217,29 +185,6 @@ const WORKSHOP_SECTIONS: WorkshopSection[] = [
 //         vi: '4.3 Thiết Lập Frontend',
 //     },
 //     {
-//         id: '4.4-Backend',
-//         folderName: '4.4-Backend',
-//         en: '4.4 Backend Setup',
-//         vi: '4.4 Thiết Lập Backend',
-//         children: [
-//             { id: '4.4.1-Auth', folderName: '4.4-Backend/4.4.1-Auth', en: '4.4.1 Authentication', vi: '4.4.1 Xác Thực' },
-//             { id: '4.4.2-Data', folderName: '4.4-Backend/4.4.2-Data', en: '4.4.2 Data Layer', vi: '4.4.2 Lớp Dữ Liệu' },
-//             { id: '4.4.3-Storage', folderName: '4.4-Backend/4.4.3-Storage', en: '4.4.3 Storage Layer', vi: '4.4.3 Lớp Lưu Trữ' },
-//             {
-//                 id: '4.4.4-Functions',
-//                 folderName: '4.4-Backend/4.4.4-Functions',
-//                 en: '4.4.4 Lambda Functions',
-//                 vi: '4.4.4 Các Hàm Lambda',
-//                 children: [
-//                     { id: '4.4.4.1-AIEngine', folderName: '4.4-Backend/4.4.4-Functions/4.4.4.1-AIEngine', en: '4.4.4.1 ai-engine (Bedrock)', vi: '4.4.4.1 ai-engine (Bedrock)' },
-//                     { id: '4.4.4.2-ScanImage', folderName: '4.4-Backend/4.4.4-Functions/4.4.4.2-ScanImage', en: '4.4.4.2 scan-image', vi: '4.4.4.2 scan-image' },
-//                     { id: '4.4.4.3-ProcessNutrition', folderName: '4.4-Backend/4.4.4-Functions/4.4.4.3-ProcessNutrition', en: '4.4.4.3 process-nutrition', vi: '4.4.4.3 process-nutrition' },
-//                     { id: '4.4.4.4-FriendRequest', folderName: '4.4-Backend/4.4.4-Functions/4.4.4.4-FriendRequest', en: '4.4.4.4 friend-request', vi: '4.4.4.4 friend-request' },
-//                     { id: '4.4.4.5-ResizeImage', folderName: '4.4-Backend/4.4.4-Functions/4.4.4.5-ResizeImage', en: '4.4.4.5 resize-image', vi: '4.4.4.5 resize-image' },
-//                 ],
-//             },
-//         ],
-//     },
 //     {
 //         id: '4.5-ECS-Fargate',
 //         folderName: '4.5-ECS-Fargate',

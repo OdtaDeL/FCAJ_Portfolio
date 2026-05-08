@@ -6,7 +6,7 @@ SpendWiseApp/infrastructure/environments/dev/main.tf provisions **module "amplif
 
 ### Code — Amplify + Cognito (environments/dev/main.tf)
 
-The inline build_spec pins the monorepo app root to frontend and publishes .next artifacts. NEXT_PUBLIC_API_URL is wired to the ALB DNS name (scheme follows ACM). Cognito’s post-confirmation Lambda and VPC config only activate when create_rds is true.
+The inline build_spec pins the monorepo app root to frontend and publishes .next artifacts. NEXT_PUBLIC_API_URL is wired to the ALB DNS name (scheme follows ACM).
 
 ```terraform
 # SpendWiseApp/infrastructure/environments/dev/main.tf (excerpt)
@@ -51,11 +51,6 @@ module "cognito" {
 
   project_name = var.project_name
   environment  = var.environment
-
-  enable_post_confirmation_trigger = var.create_rds
-  post_confirmation_database_url   = local.cognito_post_confirmation_database_url
-  post_confirmation_subnet_ids     = module.vpc.private_data_subnet_ids
-  post_confirmation_security_group_ids = [module.security_groups.ecs_tasks_security_group_id]
 }
 ```
 
@@ -85,11 +80,10 @@ Secrets (amplify_access_token) belong in terraform.tfvars or CI secrets — neve
 
 | Resource | Role |
 |----------|------|
-| **aws_cognito_user_pool** | Email-based users, password policy, optional **post-confirmation Lambda** trigger. |
+| **aws_cognito_user_pool** | Email-based users and password policy for the frontend auth flow. |
 | **aws_cognito_user_pool_client (web)** | Public SPA client: generate_secret = false, SRP / password / refresh flows for the frontend. |
-| **Post-confirmation Lambda** (when create_rds = true in dev) | After email confirmation, **upserts the user into PostgreSQL** so app data stays aligned with Cognito. Runs in **private data subnets** with the **same SG as ECS tasks** for RDS access (post_confirmation_security_group_ids). When create_rds = false, the trigger is disabled so you can stand up auth without paying for RDS. |
 
-Supporting pieces in that module include **IAM roles**, **VPC access attachment** for the Lambda, **archive_file** packaging, and a **null_resource** that runs npm install for Lambda dependencies at apply time.
+Supporting pieces in that module include the app client configuration, hosted UI/domain settings, and the IAM permissions needed for Cognito integration.
 
 ### Optional: Route 53 zone for Amplify custom domain
 

@@ -150,7 +150,7 @@ export function MarkdownRenderer({ content, sectionPath }: MarkdownRendererProps
         }
 
         // Relative path starting with images/ and we have a sectionPath
-        // e.g. images/only-nutritrack-api-vpc.drawio.svg → BASE_URL/workshop/sectionPath/images/...
+        // e.g. images/only-spendwise-api-vpc.drawio.svg → BASE_URL/workshop/sectionPath/images/...
         if (src.startsWith('images/') && sectionPath) {
             return `${base}/workshop/${sectionPath}/${src}`;
         }

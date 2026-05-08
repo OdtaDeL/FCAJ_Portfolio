@@ -31,19 +31,15 @@ You can spread **RDS across multiple AZs** (for example a **primary** and a **st
 
 **Why we chose it:** Direct DB troubleshooting without publishing RDS publicly; can stay off in dev to save cost.
 
-### Tables (Prisma / PostgreSQL)
+### Core tables (TypeORM / PostgreSQL)
 
-Physical table names follow **Prisma** mappings in `SpendWiseApp/backend/prisma/schema.prisma` (@@map):
+Physical table names follow the TypeORM entity mappings used by the SpendWise backend.
 
-| Table (PostgreSQL) | Main role |
+| Table | Main role |
 | :--- | :--- |
-| **users** | Application users; **Cognito** link (cognito_sub), unique email. |
-| **wallets** | Per-user wallets; balance and **currency** (default VND). |
-| **categories** | Income / expense / transfer categories per user; used by transactions and budgets. |
-| **transactions** | Money movements (income/expense/transfer), amount, source/target wallets, category, timestamp. |
-| **budgets** | Monthly/yearly budgets per user (per category or overall). |
-| **tags** | User-defined labels; many-to-many with transactions. |
-| **transaction_tags** | Join table **transactions ↔ tags**. |
-| **goals** | Savings goals (target, deadline, progress). |
-| **recurring_transactions** | **Recurring** entries (cadence, wallet, category, next run date). |
-| **notifications** | In-app notifications (type, message, read flag). |
+| **users** | Application users; Cognito link via `cognito_sub` and unique email. |
+| **transactions** | Money movements with amount, type, category, and timestamps. |
+| **budgets** | User-defined budget limits and current spending. |
+| **categories** | Shared and user-defined income/expense categories. |
+
+These four tables are the core data model used throughout the workshop. Additional fields can be added later through TypeORM migrations if the backend expands.
