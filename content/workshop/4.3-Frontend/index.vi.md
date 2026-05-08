@@ -1,69 +1,73 @@
-## ReactNative & Expo
+---
+title: Thiết Lập Frontend
+slug: /workshop/4.3-frontend/
+description: Nội dung workshop: thiết lập frontend SpendWise với NextJS và Amplify.
+thumbnail: /images/workshop/default-thumbnail.png
+date: 2026-05-03
+tags: ["workshop"]
+category: workshop
+author: FCAJ Team
+status: published
+---
 
-Để thuận tiện cho việc thực hành, phần Frontend đã được chuẩn bị sẵn dưới dạng skeleton code hoàn chỉnh về giao diện và store. Bạn sẽ tiến hành tải mã nguồn và chuẩn bị môi trường chạy.
+## Overview
 
-```text
-frontend/
-  app/                     # Expo Router — every file is a route
-    _layout.tsx            # Root: LanguageProvider, GestureHandlerRootView, auth guard
-    (tabs)/
-      _layout.tsx          # Tab bar with 6 tabs + center "+" button
-      home.tsx             # Dashboard: daily macros, streak, Ollie pet
-      kitchen.tsx          # Fridge inventory + AI recipe suggestions
-      battle.tsx           # Friend leaderboard + challenges
-      ai-coach.tsx         # Chat with Ollie
-      progress.tsx         # Weekly/monthly nutrition charts
-      add.tsx              # Food logging: photo, voice, manual
-    welcome.tsx            # Onboarding / landing
-    login.tsx              # Email+password + Google OAuth
-    signup.tsx             # Registration form
-    verify-otp.tsx         # Email OTP verification
-  src/
-    store/                 # Zustand stores (authStore, userStore, mealStore, ...)
-    services/              # Business logic (authService, aiService, audioService, ...)
-    lib/amplify.ts         # Amplify.configure() — import as side-effect in _layout
-    i18n/                  # LanguageProvider + translations (vi/en)
-    security/              # Biometric auth, screen capture prevention, input validation
-    constants/             # colors.ts, typography.ts
-  assets/                  # Images, fonts
-  MANHINH/                 # Pet evolution videos 1.mp4–5.mp4
-  amplify_outputs.json     # Auto-generated per environment — do NOT edit manually
-  package.json
-  .npmrc                   # legacy-peer-deps=true
-```
+Phần này nói về bước thiết lập frontend của SpendWise. Ứng dụng dùng NextJS và được triển khai qua AWS Amplify, nên mục tiêu ở đây là chạy được frontend ở local và hiểu cách nó sẽ nối sang backend ở các bước sau.
 
-## 1. Tải mã nguồn (Clone Repository)
+## What You Will Learn
 
-Mở terminal tại thư mục làm việc của bạn và chạy lệnh:
+- Thiết lập cấu trúc frontend.
+- Chạy ứng dụng NextJS ở local.
+- Hiểu cách Amplify kết nối frontend với hệ thống còn lại.
+- Chuẩn bị phần giao tiếp với authentication và API.
+
+## Requirements
+
+- Hoàn thành phần 4.2 Prerequisites.
+- Node.js 22.x LTS.
+- npm 11+ hoặc pnpm.
+- Git.
+- Biết cơ bản về NextJS và React.
+
+## Content
+
+## Thiết lập Frontend
+
+Phần frontend đã được chuẩn bị sẵn. Bước này chỉ cần clone dự án, cài dependencies và chạy local.
+
+### 1. Clone repository
 
 ```bash
 git clone https://github.com/NeuraX-HQ/neurax-web-app.git
 cd neurax-web-app
 ```
 
-## 2. Cài đặt thư viện (npm install)
-
-Cài đặt các phụ thuộc cần thiết cho Expo và xác thực:
+### 2. Cài đặt dependencies
 
 ```bash
 cd frontend
 npm install
 ```
 
-## 3. Chạy ứng dụng với Expo
-
-Khởi động môi trường phát triển:
+### 3. Chạy ứng dụng local
 
 ```bash
-npx expo start
+npm run dev
 ```
 
-Tại đây, bạn sẽ thấy một mã QR. Sử dụng điện thoại đã cài **Expo Go** để quét mã này. 
+Lúc này bạn sẽ thấy frontend chạy trên trình duyệt. Một vài tính năng có thể vẫn là dữ liệu mẫu cho đến khi backend và Amplify được kết nối.
 
+### 4. Cần kiểm tra gì
 
-Màn hình sẽ hiển thị thông báo lỗi kết nối Backend hoặc lỗi Config — điều này hoàn toàn bình thường vì chúng ta chưa triển khai hạ tầng Amplify ở bước tiếp theo.
-
+- Layout hiển thị đúng.
+- Điều hướng giữa các trang hoạt động.
+- Đổi ngôn ngữ hoạt động nếu dự án có hỗ trợ.
+- Nội dung tĩnh không báo lỗi.
 
 ---
 
-[Tiếp tục đến 4.4 Thiết lập Backend](../4.4-Backend/)
+[Tiếp tục đến 4.4 Thiết Lập Backend](../4.4-Backend/)
+
+## Kết luận
+
+Khi frontend chạy ổn ở local, bạn có thể chuyển sang phần backend để kết nối tiếp các phần còn lại của SpendWise.

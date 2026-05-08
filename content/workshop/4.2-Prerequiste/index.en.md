@@ -1,52 +1,35 @@
----
-title: Access and Information Requirements
-slug: /workshop/4.2-prerequiste/
-description: Workshop content: ﻿## Access and Information Requirements
-thumbnail: /images/workshop/default-thumbnail.png
-date: 2026-05-03
-tags: ["workshop"]
-category: workshop
-author: FCAJ Team
-status: published
----
-
 ## Overview
 
-_TBD._
+Before starting this workshop, make sure you have the required AWS access, local tools, and basic knowledge to follow the SpendWise implementation path. These prerequisites are aligned with the workshop overview and project proposal, which are based on a secure 3-tier AWS architecture using Terraform, NextJS, NestJS, ECS Fargate, Cognito, and RDS.
 
 ## What You Will Learn
 
-_TBD._
+This section prepares you for the workshop by covering the access and setup needed to follow the SpendWise deployment flow smoothly.
 
 ## Requirements
 
-_TBD._
+## 1. AWS Account and Permissions
+- An AWS account with `AdministratorAccess` permissions.
+- Access to the AWS services used in the project: VPC, ECS Fargate, ECR, RDS PostgreSQL, Cognito, Amplify, WAF, CloudWatch, Secrets Manager, and ALB.
+- A working AWS CLI profile configured for the target account.
 
-## Content
+## 2. Local Development Tools
+- **Node.js 22.x LTS** for frontend and backend tooling.
+- **npm 11+** or **pnpm** for package management.
+- **Docker Desktop** for building and testing container images locally.
+- **AWS CLI** configured with your AWS credentials.
+- **Git** for cloning the repository and managing source changes.
 
-﻿## Access and Information Requirements
-Before you begin, ensure you have the following tools and access permissions:
+## 3. Technical Background
+- Basic familiarity with **NextJS** for the frontend.
+- Basic familiarity with **NestJS** for the backend API.
+- Understanding of **Terraform** and Infrastructure as Code concepts.
+- Familiarity with containers, environment variables, networking, and PostgreSQL basics.
 
-## 1. AWS Account & Sydney Region
-The region used throughout this workshop is `ap-southeast-2` (Sydney). 
-Four mandatory steps in Sydney:
-1. **Model Access**: Access the Amazon Bedrock console -> Model access -> Select **Edit** -> Enable the **Qwen3-VL-235B-A22B** model.
-
-![bedrock-model-access.png](/images/bedrock-model-access.png)
-
-2. **IAM User**: Create an account with `AdministratorAccess` permissions.
-3. **Secret Manager**: Store `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` retrieved from your Google Cloud Console.
-
-![google-oauth-client.png](/images/google-oauth-client.png)
-
-## 2. Local Machine Tools
-- **Node.js**: Version 22.x (LTS) - extremely important because our Lambda functions run on Node 22.
-- **Docker Desktop**: Necessary for building images for ECS Fargate.
-- **AWS CLI**: Run the `aws configure` command with Admin credentials.
-- **npm**: Version 11 or higher.
-
-## 3. Expo Go (Mobile)
-Download the **Expo Go** application from the App Store or Play Store to test the Frontend source code on a real phone as quickly as possible.
+## 4. Optional but Helpful
+- A code editor such as VS Code.
+- Familiarity with AWS Console navigation.
+- Basic understanding of authentication flows such as Cognito sign-in and sign-up.
 
 ---
 
@@ -54,4 +37,4 @@ Download the **Expo Go** application from the App Store or Play Store to test th
 
 ## Conclusion
 
-_TBD._
+With these prerequisites in place, you are ready to move into the frontend setup and continue building the SpendWise platform step by step.

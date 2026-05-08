@@ -1,63 +1,67 @@
-
+---
+title: Backend Setup
+slug: /workshop/4.4-backend/
+description: Workshop content: preparing the SpendWise backend foundation with AWS Amplify Gen 2.
+thumbnail: /images/workshop/default-thumbnail.png
+date: 2026-05-03
+tags: ["workshop"]
+category: workshop
+author: FCAJ Team
+status: published
+---
 
 ## Overview
 
-We will initialize the data heart of NutriTrack using TypeScript source code. This section covers setting up the backend infrastructure using AWS Amplify Gen 2, which provides a powerful framework for building serverless applications with authentication, data storage, and API capabilities.
+This section prepares the backend foundation for SpendWise. The backend is built with AWS Amplify Gen 2 and split into authentication, data, storage, and functions.
 
 ## What You Will Learn
 
-- Set up AWS Amplify Gen 2 project structure
-- Configure backend infrastructure with TypeScript
-- Deploy sandbox environments for development
-- Understand resource layer organization
-- Initialize authentication, data, storage, and function layers
+- Initialize the Amplify backend project.
+- Understand the amplify/ directory structure.
+- Prepare authentication, data, storage, and function layers.
+- Deploy a sandbox environment for local development.
 
 ## Requirements
 
-- Completed Frontend Setup section
-- Node.js 22+ and npm installed
-- AWS CLI configured with admin credentials
-- Basic understanding of TypeScript and serverless concepts
+- Completed 4.3 Frontend Setup.
+- Node.js 22.x LTS.
+- npm 11+ or pnpm.
+- AWS CLI configured with admin access.
+- Basic TypeScript and serverless knowledge.
 
 ## Content
 
 ## Backend Initialization
 
-We will initialize the data heart of NutriTrack using TypeScript source code.
+SpendWise uses Amplify Gen 2 for the backend foundation. The first step is to create the backend workspace and install the required dependencies.
 
-## 1. Initialize Backend Directory
-
-Create a separate directory to manage the infrastructure:
+### 1. Initialize the backend folder
 
 ```bash
 cd neurax-web-app
 mkdir backend
 cd backend
 ```
-## 2. Install Dependencies
+
+### 2. Install dependencies
 
 ```bash
 npm create amplify@latest --yes
 npm install
 ```
 
-## 3. Sandbox Deployment (First Time)
-
-Use the Amplify CLI (Gen 2) to initialize the project and deploy your personal Sandbox environment:
+### 3. Start a sandbox environment
 
 ```bash
 npx ampx pipeline-deploy --branch main --app-id [YOUR_APP_ID]
 
-# Or run the following for local work:
+# Or for local work:
 npx ampx sandbox
 ```
-![ampx-sandbox-start.png](/images/ampx-sandbox-start.png)
 
----
+## Resource Layer Details
 
-## Resource Layer Details:
-
-Now, we will define the core configuration files located within the `amplify/` directory:
+The backend is split into these main layers inside the amplify/ directory:
 
 1. [Authentication Layer (Auth)](4.4.1-Auth/)
 2. [Data Layer (Data)](4.4.2-Data/)
@@ -70,4 +74,4 @@ Now, we will define the core configuration files located within the `amplify/` d
 
 ## Conclusion
 
-By completing this backend setup, you have established the foundation for NutriTrack's serverless infrastructure using AWS Amplify Gen 2. The backend is now ready for implementing the specific resource layers including authentication, data storage, and serverless functions that will power the nutrition tracking application.
+After this setup, the backend foundation is ready. Next, you can move into the resource layers that power authentication, data handling, storage, and custom logic for SpendWise.

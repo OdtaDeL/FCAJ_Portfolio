@@ -1,53 +1,67 @@
+---
+title: Thiết Lập Backend
+slug: /workshop/4.4-backend/
+description: Nội dung workshop: chuẩn bị nền tảng backend cho SpendWise với AWS Amplify Gen 2.
+thumbnail: /images/workshop/default-thumbnail.png
+date: 2026-05-03
+tags: ["workshop"]
+category: workshop
+author: FCAJ Team
+status: published
+---
 
 ## Overview
 
-_TBD._
+Phần này chuẩn bị nền tảng backend cho SpendWise. Backend được xây bằng AWS Amplify Gen 2 và chia theo các lớp: xác thực, dữ liệu, lưu trữ và functions.
 
 ## What You Will Learn
 
-_TBD._
+- Khởi tạo dự án backend với Amplify.
+- Hiểu cấu trúc thư mục amplify/.
+- Chuẩn bị các lớp auth, data, storage và function.
+- Triển khai môi trường sandbox cho việc làm local.
 
 ## Requirements
 
-_TBD._
+- Hoàn thành phần 4.3 Thiết Lập Frontend.
+- Node.js 22.x LTS.
+- npm 11+ hoặc pnpm.
+- AWS CLI đã cấu hình quyền admin.
+- Biết cơ bản về TypeScript và serverless.
 
 ## Content
 
-﻿Chúng ta sẽ khởi tạo trái tim dữ liệu của NutriTrack bằng mã nguồn TypeScript.
+## Khởi tạo backend
 
-## 1. Khởi tạo Thư mục Backend
+SpendWise dùng Amplify Gen 2 làm nền tảng backend. Bước đầu tiên là tạo workspace backend và cài các dependency cần thiết.
 
-Tạo một thư mục riêng biệt để quản lý hạ tầng:
+### 1. Tạo thư mục backend
 
 ```bash
 cd neurax-web-app
 mkdir backend
 cd backend
 ```
-## 2. Cài đặt Phụ lục
+
+### 2. Cài đặt dependencies
 
 ```bash
 npm create amplify@latest --yes
 npm install
 ```
 
-## 3. Triển khai Sandbox (Lần đầu)
-
-Sử dụng Amplify CLI (Gen 2) để khởi tạo dự án và triển khai môi trường Sandbox cá nhân:
+### 3. Chạy sandbox
 
 ```bash
 npx ampx pipeline-deploy --branch main --app-id [YOUR_APP_ID]
 
-# Hoặc chạy lệnh sau để làm việc local:
+# Hoặc dùng local work:
 npx ampx sandbox
 ```
-![ampx-sandbox-start.png](/images/ampx-sandbox-start.png)
 
----
+## Chi tiết các lớp tài nguyên
 
-## Chi tiết các lớp tài nguyên:
-
-Bây giờ, chúng ta sẽ lần lượt định nghĩa các tệp cấu hình cốt lõi nằm trong thư mục `amplify/`:
+Các lớp chính trong thư mục amplify/ gồm:
 
 1. [Lớp Xác thực (Auth)](4.4.1-Auth/)
 2. [Lớp Dữ liệu (Data)](4.4.2-Data/)
@@ -58,6 +72,6 @@ Bây giờ, chúng ta sẽ lần lượt định nghĩa các tệp cấu hình c
 
 [Tiếp tục đến 4.5 Tầng Container ECS](../4.5-ECS-Fargate/)
 
-## Conclusion
+## Kết luận
 
-_TBD._
+Sau bước này, nền tảng backend đã sẵn sàng. Tiếp theo, bạn sẽ đi vào từng lớp tài nguyên để xử lý xác thực, dữ liệu, lưu trữ và logic của SpendWise.

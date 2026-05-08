@@ -1,33 +1,44 @@
 
+---
+title: ECS Fargate Layer
+slug: /workshop/4.5-ecs-fargate/
+description: Workshop content: deploying the SpendWise container layer with ECS Fargate.
+thumbnail: /images/workshop/default-thumbnail.png
+date: 2026-05-03
+tags: ["workshop"]
+category: workshop
+author: FCAJ Team
+status: published
+---
 
 ## Overview
 
-The ECS Fargate layer runs a containerized FastAPI service in parallel with the Amplify serverless backend. It handles tasks not suitable for Lambda, such as long-running data processing, custom AI inference, or processes requiring persistent connections.
+This section covers the ECS Fargate layer for SpendWise. The containerized backend runs alongside the Amplify backend and is used for parts of the system that fit better in a container, such as the NestJS API, longer-running work, or anything that needs a persistent runtime.
 
 ## What You Will Learn
 
-- Deploy containerized applications with ECS Fargate
-- Set up FastAPI services for AI inference
-- Configure networking and load balancing
-- Integrate containers with serverless architecture
-- Optimize for long-running tasks and persistent connections
+- Deploy a containerized backend with ECS Fargate.
+- Set up the VPC and networking around the service.
+- Place the API behind an Application Load Balancer.
+- Use NAT Instance and endpoints to keep costs under control.
+- Connect the container layer with the rest of SpendWise.
 
 ## Requirements
 
-- Completed Backend Setup section
-- Docker Desktop installed
-- Understanding of containerization concepts
-- Basic knowledge of FastAPI or Python web frameworks
+- Completed 4.4 Backend Setup.
+- Docker Desktop installed.
+- Basic understanding of containers and AWS networking.
+- Familiarity with NestJS or server-side APIs.
 
 ## Content
 
-The ECS Fargate layer runs a containerized FastAPI service in parallel with the Amplify serverless backend. It handles tasks not suitable for Lambda, such as long-running data processing, custom AI inference, or processes requiring persistent connections.
+The ECS Fargate layer runs the container part of SpendWise. It is a good fit for the NestJS API and any task that should stay alive longer than a Lambda function usually would.
 
 ## System Architecture
 
-![NutriTrack API VPC Architecture](images/only-nutritrack-api-vpc.drawio.svg)
+![SpendWise API VPC Architecture](images/only-nutritrack-api-vpc.drawio.svg)
 
-The ECS tasks run in a **Private Subnet** for security, while an **Application Load Balancer (ALB)** resides in the **Public Subnet** to receive internet requests. Tasks access other AWS services through a **NAT Instance** (saving 70% cost compared to a NAT Gateway) or an **S3 Gateway Endpoint** (free).
+The ECS tasks run in a **Private Subnet** for security, while an **Application Load Balancer (ALB)** sits in the **Public Subnet** and receives traffic from the internet. Tasks reach AWS services through a **NAT Instance** or through service endpoints where possible.
 
 ## Estimated Cost
 
@@ -40,13 +51,13 @@ The ECS tasks run in a **Private Subnet** for security, while an **Application L
 | **Total** | **≈$46** |
 
 > [!TIP]
-> Using a NAT Instance instead of a NAT Gateway can save you approximately $28 per month (NAT Gateway ≈$35.63/mo vs NAT Instance $7.63/mo), which is significant for startups or experimental projects.
+> A NAT Instance is cheaper than a NAT Gateway and is enough for this workshop setup.
 
-## Implementation Steps:
+## Implementation Steps
 
 1. [4.5.1 VPC & Network Infrastructure](4.5.1-VPC-Network/)
-2. [4.5.2 Supporting Infrastructure (S3, Secrets, IAM)](4.5.2-Infrastructure/)
-3. [4.5.3 NAT Optimization (NAT Instance)](4.5.3-NAT-Instance/)
+2. [4.5.2 Supporting Infrastructure](4.5.2-Infrastructure/)
+3. [4.5.3 NAT Optimization](4.5.3-NAT-Instance/)
 4. [4.5.4 Fargate & ALB Deployment](4.5.4-Fargate-ALB/)
 
 ---
@@ -55,4 +66,4 @@ The ECS tasks run in a **Private Subnet** for security, while an **Application L
 
 ## Conclusion
 
-By implementing the ECS Fargate layer, you have successfully deployed a containerized FastAPI service that complements the serverless Amplify backend. This hybrid architecture allows NutriTrack to handle both lightweight Lambda functions and resource-intensive containerized tasks, providing a scalable and cost-effective solution for AI-powered nutrition tracking.
+By the end of this section, the SpendWise container layer will be ready to sit behind the load balancer and work with the rest of the stack.

@@ -1,57 +1,40 @@
----
-title: Các yêu cầu về truy cập và thông tin
-slug: /workshop/4.2-prerequiste/
-description: Workshop content: ﻿## Các yêu cầu về truy cập và thông tin
-thumbnail: /images/workshop/default-thumbnail.png
-date: 2026-05-03
-tags: ["workshop"]
-category: workshop
-author: FCAJ Team
-status: published
----
-
 ## Overview
 
-_TBD._
+Trước khi bắt đầu workshop này, bạn cần chuẩn bị đầy đủ quyền truy cập AWS, công cụ làm việc cục bộ và kiến thức nền tảng để có thể theo kịp lộ trình triển khai SpendWise. Các điều kiện này được xây dựng dựa trên overview và proposal của dự án, vốn sử dụng kiến trúc AWS 3 lớp bảo mật với Terraform, NextJS, NestJS, ECS Fargate, Cognito và RDS.
 
 ## What You Will Learn
 
-_TBD._
+Phần này giúp bạn chuẩn bị sẵn sàng để đi theo luồng triển khai SpendWise một cách trơn tru và nhất quán.
 
 ## Requirements
 
-_TBD._
+## 1. Tài khoản AWS và quyền truy cập
+- Một tài khoản AWS có quyền `AdministratorAccess`.
+- Quyền truy cập vào các dịch vụ được dùng trong dự án: VPC, ECS Fargate, ECR, RDS PostgreSQL, Cognito, Amplify, WAF, CloudWatch, Secrets Manager và ALB.
+- AWS CLI profile đã được cấu hình cho tài khoản đích.
 
-## Content
+## 2. Công cụ phát triển cục bộ
+- **Node.js 22.x LTS** cho frontend và backend tooling.
+- **npm 11+** hoặc **pnpm** để quản lý package.
+- **Docker Desktop** để build và test container image cục bộ.
+- **AWS CLI** để xác thực và hỗ trợ triển khai.
+- **Git** để clone repository và quản lý thay đổi mã nguồn.
 
-﻿## Các yêu cầu về truy cập và thông tin
-Trước khi bắt đầu, hãy đảm bảo bạn có đầy đủ các công cụ và quyền truy cập sau đây:
+## 3. Kiến thức nền tảng
+- Kiến thức cơ bản về **NextJS** cho phần frontend.
+- Kiến thức cơ bản về **NestJS** cho phần backend API.
+- Hiểu biết về **Terraform** và Hạ tầng dưới dạng mã (IaC).
+- Làm quen với container, biến môi trường, networking và kiến thức cơ bản về PostgreSQL.
 
-## 1. Tài khoản AWS & Region Sydney
-Region được sử dụng xuyên suốt workshop là `ap-southeast-2` (Sydney). 
-Bốn bước bắt buộc tại Sydney:
-1. **Model Access**: Truy cập Amazon Bedrock console -> Model access -> Chọn **Edit** -> Kích hoạt mô hình **Qwen3-VL-235B-A22B**
-
-![bedrock-model-access.png](/images/bedrock-model-access.png)
-
-2. **IAM User**: Tạo tài khoản có quyền `AdministratorAccess`.
-3. **Secret Manager**: Lưu trữ `GOOGLE_CLIENT_ID` và `GOOGLE_CLIENT_SECRET` nạp từ Google Cloud Console.
-
-![google-oauth-client.png](/images/google-oauth-client.png)
-
-## 2. Công cụ máy tính Local
-- **Node.js**: Phiên bản 22.x (LTS) - cực kỳ quan trọng vì Lambda của chúng ta chạy Node 22.
-- **Docker Desktop**: Cần thiết để build Image cho ECS Fargate.
-- **AWS CLI**: Đã chạy lệnh `aws configure` với quyền Admin.
-- **npm**: Phiên bản 11 trở lên.
-
-## 3. Expo Go (Mobile)
-Tải ứng dụng **Expo Go** từ App Store hoặc Play Store để có thể chạy thử mã nguồn Frontend trên điện thoại thật một cách nhanh nhất.
+## 4. Truy cập khuyến nghị
+- Một trình soạn thảo mã như VS Code.
+- Làm quen với cách điều hướng trong AWS Console.
+- Hiểu sơ bộ về luồng xác thực như đăng nhập/đăng ký với Cognito.
 
 ---
 
 [Tiếp tục đến 4.3 Thiết lập Frontend](../4.3-Frontend/)
 
-## Conclusion
+## Kết luận
 
-_TBD._
+Khi đã chuẩn bị xong các điều kiện tiên quyết này, bạn có thể chuyển sang phần thiết lập Frontend và tiếp tục xây dựng SpendWise từng bước một.

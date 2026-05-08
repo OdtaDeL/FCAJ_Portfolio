@@ -1,25 +1,43 @@
+---
+title: Tầng ECS Fargate
+slug: /workshop/4.5-ecs-fargate/
+description: Nội dung workshop: triển khai tầng container SpendWise với ECS Fargate.
+thumbnail: /images/workshop/default-thumbnail.png
+date: 2026-05-03
+tags: ["workshop"]
+category: workshop
+author: FCAJ Team
+status: published
+---
 
 ## Overview
 
-_TBD._
+Phần này nói về tầng ECS Fargate của SpendWise. Backend container sẽ chạy song song với backend Amplify và dùng cho những phần phù hợp hơn với container, như API NestJS, các tác vụ chạy lâu hơn hoặc những xử lý cần runtime ổn định.
 
 ## What You Will Learn
 
-_TBD._
+- Triển khai backend container bằng ECS Fargate.
+- Thiết lập VPC và mạng xung quanh dịch vụ.
+- Đặt API phía sau Application Load Balancer.
+- Dùng NAT Instance và endpoint để giữ chi phí ở mức vừa phải.
+- Kết nối tầng container với phần còn lại của SpendWise.
 
 ## Requirements
 
-_TBD._
+- Hoàn thành phần 4.4 Thiết Lập Backend.
+- Đã cài Docker Desktop.
+- Hiểu cơ bản về container và AWS networking.
+- Biết sơ về NestJS hoặc API server-side.
 
 ## Content
 
-Tầng ECS Fargate chạy một FastAPI service được container hóa song song với backend Amplify serverless. Nó xử lý các tác vụ không phù hợp với Lambda như: xử lý dữ liệu kéo dài, suy luận AI tùy chỉnh, hoặc các tiến trình cần duy trì kết nối liên tục.
+Tầng ECS Fargate chạy phần container của SpendWise. Đây là nơi phù hợp cho API NestJS và các công việc không nên nhét vào Lambda.
 
 ## Kiến trúc Hệ thống
 
-![Kiến trúc NutriTrack API VPC](images/only-nutritrack-api-vpc.drawio.svg)
+![Kiến trúc API VPC của SpendWise](images/only-nutritrack-api-vpc.drawio.svg)
 
-Các ECS task chạy trong **Private Subnet** để đảm bảo an ninh; **Application Load Balancer (ALB)** nằm trong **Public Subnet** để tiếp nhận yêu cầu từ internet. Task truy cập vào các dịch vụ AWS khác thông qua **NAT Instance** (giúp tiết kiệm 70% chi phí so với NAT Gateway) hoặc **S3 Gateway Endpoint** (miễn phí).
+Các ECS task chạy trong **Private Subnet** để đảm bảo an toàn, còn **Application Load Balancer (ALB)** nằm ở **Public Subnet** để nhận traffic từ internet. Task truy cập các dịch vụ AWS thông qua **NAT Instance** hoặc thông qua endpoint khi có thể.
 
 ## Ước tính Chi phí
 
@@ -32,19 +50,19 @@ Các ECS task chạy trong **Private Subnet** để đảm bảo an ninh; **Appl
 | **Tổng cộng** | **≈$46** |
 
 > [!TIP]
-> Sử dụng NAT Instance thay vì NAT Gateway có thể tiết kiệm cho bạn khoảng $28 mỗi tháng (NAT Gateway ≈$35.63/tháng so với NAT Instance $7.63/tháng), một con số đáng kể cho các dự án khởi nghiệp hoặc thử nghiệm.
+> NAT Instance rẻ hơn NAT Gateway và đủ dùng cho cấu hình của workshop này.
 
-## Các bước triển khai:
+## Các bước triển khai
 
 1. [4.5.1 Hạ tầng Mạng (VPC & Network)](4.5.1-VPC-Network/)
-2. [4.5.2 Hạ tầng hỗ trợ (S3, Secrets, IAM)](4.5.2-Infrastructure/)
-3. [4.5.3 Tối ưu hóa NAT (NAT Instance)](4.5.3-NAT-Instance/)
+2. [4.5.2 Hạ tầng hỗ trợ](4.5.2-Infrastructure/)
+3. [4.5.3 Tối ưu hóa NAT](4.5.3-NAT-Instance/)
 4. [4.5.4 Triển khai Fargate & ALB](4.5.4-Fargate-ALB/)
 
 ---
 
 [Tiếp tục đến 4.6 CI/CD](../4.6-CICD/)
 
-## Conclusion
+## Kết luận
 
-_TBD._
+Sau phần này, tầng container của SpendWise sẽ sẵn sàng để đứng sau load balancer và làm việc cùng các phần còn lại của hệ thống.
