@@ -1,7 +1,7 @@
 ---
 title: Thiết Lập Backend
 slug: /workshop/4.4-backend/
-description: Nội dung workshop: chuẩn bị nền tảng backend cho SpendWise với AWS Amplify Gen 2.
+description: Nội dung workshop: chuẩn bị nền tảng backend cho SpendWise với NestJS và Docker.
 thumbnail: /images/workshop/default-thumbnail.png
 date: 2026-05-03
 tags: ["workshop"]
@@ -12,66 +12,93 @@ status: published
 
 ## Overview
 
-Phần này chuẩn bị nền tảng backend cho SpendWise. Backend được xây bằng AWS Amplify Gen 2 và chia theo các lớp: xác thực, dữ liệu, lưu trữ và functions.
+Phần này chuẩn bị backend NestJS cho SpendWise và container hóa bằng Docker. Backend kết nối đến Amazon Cognito để xác thực, Amazon RDS PostgreSQL để lưu dữ liệu, và Secrets Manager để quản lý credentials an toàn.
 
 ## What You Will Learn
 
-- Khởi tạo dự án backend với Amplify.
-- Hiểu cấu trúc thư mục amplify/.
-- Chuẩn bị các lớp auth, data, storage và function.
-- Triển khai môi trường sandbox cho việc làm local.
+- Khởi tạo dự án NestJS với TypeScript và TypeORM.
+- Cấu hình kết nối PostgreSQL đến Amazon RDS.
+- Tích hợp Amazon Cognito cho xác thực dựa trên JWT.
+- Thiết lập biến môi trường và Secrets Manager.
+- Tạo Dockerfile và chuẩn bị cho triển khai ECS.
+- Hiểu cách phân chia trách nhiệm: lớp Auth, Data, Storage.
 
 ## Requirements
 
 - Hoàn thành phần 4.3 Thiết Lập Frontend.
-- Node.js 22.x LTS.
-- npm 11+ hoặc pnpm.
+- Node.js 22.x LTS và npm 11+ hoặc pnpm.
 - AWS CLI đã cấu hình quyền admin.
-- Biết cơ bản về TypeScript và serverless.
+- Docker đã cài đặt trên máy local.
+- Kiến thức cơ bản về NestJS, TypeORM, và containerization.
+- Quen thuộc với PostgreSQL và các khái niệm cơ sở dữ liệu quan hệ.
 
 ## Content
 
-## Khởi tạo backend
+## Khởi tạo Backend
 
-SpendWise dùng Amplify Gen 2 làm nền tảng backend. Bước đầu tiên là tạo workspace backend và cài các dependency cần thiết.
+Backend của SpendWise được xây bằng **NestJS** — một framework TypeScript-first mạnh mẽ để xây dựng các ứng dụng phía máy chủ có khả năng mở rộng cao. Khác với phương pháp serverless, kiến trúc này sử dụng container hóa (Docker) và ECS Fargate cho các quá trình chạy lâu dài và stateful.
 
 ### 1. Tạo thư mục backend
 
 ```bash
-cd neurax-web-app
-mkdir backend
-cd backend
+mkdir spendwise-backend
+cd spendwise-backend
 ```
 
-### 2. Cài đặt dependencies
+### 2. Khởi tạo dự án NestJS
 
 ```bash
-npm create amplify@latest --yes
+npm i -g @nestjs/cli
+nest new . --package-manager npm
 npm install
 ```
 
-### 3. Chạy sandbox
+### 3. Cài đặt các dependency cần thiết
 
 ```bash
-npx ampx pipeline-deploy --branch main --app-id [YOUR_APP_ID]
+# Database & ORM
+npm install @nestjs/typeorm typeorm pg
 
-# Hoặc dùng local work:
-npx ampx sandbox
+# Authentication
+npm install @nestjs/jwt @nestjs/passport passport passport-jwt
+npm install @types/passport-jwt
+
+# Configuration
+npm install @nestjs/config dotenv
+
+# AWS SDK (cho Secrets Manager & Cognito)
+npm install @aws-sdk/client-secrets-manager
+
+# Utilities
+npm install class-transformer class-validator bcrypt
+npm install @types/bcrypt
 ```
 
-## Chi tiết các lớp tài nguyên
+### 4. Kiểm tra cài đặt
 
-Các lớp chính trong thư mục amplify/ gồm:
+```bash
+npm run start:dev
+```
 
-1. [Lớp Xác thực (Auth)](4.4.1-Auth/)
-2. [Lớp Dữ liệu (Data)](4.4.2-Data/)
-3. [Lớp Lưu trữ (Storage)](4.4.3-Storage/)
-4. [Các hàm Logic (Functions)](4.4.4-Functions/)
+Server sẽ chạy trên `http://localhost:3000`.
 
 ---
 
-[Tiếp tục đến 4.5 Tầng Container ECS](../4.5-ECS-Fargate/)
+## Các Lớp Kiến Trúc Backend
 
-## Kết luận
+Backend của SpendWise được tổ chức thành bốn lớp chức năng chính:
 
-Sau bước này, nền tảng backend đã sẵn sàng. Tiếp theo, bạn sẽ đi vào từng lớp tài nguyên để xử lý xác thực, dữ liệu, lưu trữ và logic của SpendWise.
+1. **[Lớp Xác Thực (4.4.1)](4.4.1-Auth/)** — Tích hợp Cognito, xác thực JWT, auth guards
+2. **[Lớp Dữ Liệu (4.4.2)](4.4.2-Data/)** — Schema PostgreSQL, TypeORM entities, migrations cơ sở dữ liệu
+3. **[Lớp Lưu Trữ (4.4.3)](4.4.3-Storage/)** — Secrets Manager, cấu hình biến môi trường, quản lý credentials
+4. **[Lớp API Functions (4.4.4)](4.4.4-Functions/)** — Controllers, services, các endpoints logic kinh doanh
+
+Mỗi lớp có thể được kiểm tra độc lập và có thể được triển khai dưới dạng một container.
+
+---
+
+[Tiếp tục đến 4.5 Triển Khai ECS Fargate](../4.5-ECS-Fargate/)
+
+## Kết Luận
+
+Với NestJS đã được khởi tạo và các dependencies đã cài đặt, nền tảng backend của bạn đã sẵn sàng. Tiếp theo, bạn sẽ cấu hình từng lớp để xây dựng một API cấp sản xuất tích hợp Cognito cho xác thực, RDS cho dữ liệu, và chuẩn bị cho triển khai container trên ECS Fargate.

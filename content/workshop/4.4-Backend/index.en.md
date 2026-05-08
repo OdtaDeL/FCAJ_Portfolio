@@ -1,7 +1,7 @@
 ---
 title: Backend Setup
 slug: /workshop/4.4-backend/
-description: Workshop content: preparing the SpendWise backend foundation with AWS Amplify Gen 2.
+description: Workshop content: preparing the SpendWise backend foundation with NestJS and Docker.
 thumbnail: /images/workshop/default-thumbnail.png
 date: 2026-05-03
 tags: ["workshop"]
@@ -12,66 +12,93 @@ status: published
 
 ## Overview
 
-This section prepares the backend foundation for SpendWise. The backend is built with AWS Amplify Gen 2 and split into authentication, data, storage, and functions.
+This section prepares the NestJS backend for SpendWise and containers it with Docker. The backend connects to Amazon Cognito for authentication, Amazon RDS PostgreSQL for data persistence, and Secrets Manager for secure credential management.
 
 ## What You Will Learn
 
-- Initialize the Amplify backend project.
-- Understand the amplify/ directory structure.
-- Prepare authentication, data, storage, and function layers.
-- Deploy a sandbox environment for local development.
+- Initialize a NestJS project with TypeScript and TypeORM.
+- Configure PostgreSQL connection to Amazon RDS.
+- Integrate Amazon Cognito for JWT-based authentication.
+- Set up environment variables and Secrets Manager.
+- Create a Dockerfile and prepare for ECS deployment.
+- Understand the separation of concerns: Auth, Data, Storage layers.
 
 ## Requirements
 
 - Completed 4.3 Frontend Setup.
-- Node.js 22.x LTS.
-- npm 11+ or pnpm.
+- Node.js 22.x LTS and npm 11+ or pnpm.
 - AWS CLI configured with admin access.
-- Basic TypeScript and serverless knowledge.
+- Docker installed locally.
+- Basic knowledge of NestJS, TypeORM, and containerization.
+- Familiarity with PostgreSQL and relational database concepts.
 
 ## Content
 
 ## Backend Initialization
 
-SpendWise uses Amplify Gen 2 for the backend foundation. The first step is to create the backend workspace and install the required dependencies.
+SpendWise backend is built with **NestJS** — a robust, TypeScript-first framework for building scalable server-side applications. Unlike serverless approaches, this architecture uses containerization (Docker) and ECS Fargate for stateful, long-running processes.
 
-### 1. Initialize the backend folder
+### 1. Create the backend directory
 
 ```bash
-cd neurax-web-app
-mkdir backend
-cd backend
+mkdir spendwise-backend
+cd spendwise-backend
 ```
 
-### 2. Install dependencies
+### 2. Initialize NestJS project
 
 ```bash
-npm create amplify@latest --yes
+npm i -g @nestjs/cli
+nest new . --package-manager npm
 npm install
 ```
 
-### 3. Start a sandbox environment
+### 3. Install required dependencies
 
 ```bash
-npx ampx pipeline-deploy --branch main --app-id [YOUR_APP_ID]
+# Database & ORM
+npm install @nestjs/typeorm typeorm pg
 
-# Or for local work:
-npx ampx sandbox
+# Authentication
+npm install @nestjs/jwt @nestjs/passport passport passport-jwt
+npm install @types/passport-jwt
+
+# Configuration
+npm install @nestjs/config dotenv
+
+# AWS SDK (for Secrets Manager & Cognito)
+npm install @aws-sdk/client-secrets-manager
+
+# Utilities
+npm install class-transformer class-validator bcrypt
+npm install @types/bcrypt
 ```
 
-## Resource Layer Details
+### 4. Verify installation
 
-The backend is split into these main layers inside the amplify/ directory:
+```bash
+npm run start:dev
+```
 
-1. [Authentication Layer (Auth)](4.4.1-Auth/)
-2. [Data Layer (Data)](4.4.2-Data/)
-3. [Storage Layer (Storage)](4.4.3-Storage/)
-4. [Logic Functions (Functions)](4.4.4-Functions/)
+The server should start on `http://localhost:3000`.
 
 ---
 
-[Continue to 4.5 ECS Container Layer](../4.5-ECS-Fargate/)
+## Backend Architecture Layers
+
+The SpendWise backend is organized into four main functional layers:
+
+1. **[Authentication Layer (4.4.1)](4.4.1-Auth/)** — Cognito integration, JWT validation, auth guards
+2. **[Data Layer (4.4.2)](4.4.2-Data/)** — PostgreSQL schema, TypeORM entities, database migrations
+3. **[Storage Layer (4.4.3)](4.4.3-Storage/)** — Secrets Manager, environment configuration, credential management
+4. **[API Functions Layer (4.4.4)](4.4.4-Functions/)** — Controllers, services, business logic endpoints
+
+Each layer is independently testable and can be deployed as a container.
+
+---
+
+[Continue to 4.5 ECS Fargate Deployment](../4.5-ECS-Fargate/)
 
 ## Conclusion
 
-After this setup, the backend foundation is ready. Next, you can move into the resource layers that power authentication, data handling, storage, and custom logic for SpendWise.
+With NestJS initialized and dependencies installed, your backend foundation is ready. Next, you'll configure each layer to build a production-grade API that integrates with Cognito for auth, RDS for data, and prepares for containerized deployment on ECS Fargate.
