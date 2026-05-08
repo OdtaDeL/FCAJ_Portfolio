@@ -14,7 +14,7 @@ _TBD._
 
 ## Content
 
-﻿Hướng dẫn này giúp bạn thiết lập nền tảng mạng AWS cho NutriTrack API: VPC riêng, 4 subnets trên 2 AZ, Internet Gateway, Route Tables, 3 Security Groups, và S3 Gateway VPC Endpoint.
+﻿Hướng dẫn này giúp bạn thiết lập nền tảng mạng AWS cho SpendWise API: VPC riêng, 4 subnets trên 2 AZ, Internet Gateway, Route Tables, 3 Security Groups, và VPC endpoint cho các dịch vụ backend.
 
 > **Region:** `ap-southeast-2` (Sydney) | **Thời gian ước tính:** 45–60 phút
 
@@ -40,7 +40,7 @@ _TBD._
 3. Chọn **Your VPCs** và nhấn **Create VPC**.
 4. Cấu hình:
    - **Resources to create**: `VPC only`
-   - **Name tag**: `nutritrack-api-vpc`
+   - **Name tag**: `spendwise-api-vpc`
    - **IPv4 CIDR**: `10.0.0.0/16`
 5. Nhấn **Create VPC**.
 
@@ -59,10 +59,10 @@ Chúng ta sẽ tạo **4 subnets** chia đều trên 2 AZ (`2a` và `2c`):
 
 | Subnet Name | Availability Zone | CIDR | Loại Subnet |
 | :--- | :--- | :--- | :--- |
-| `nutritrack-api-vpc-public-alb01` | ap-southeast-2a | `10.0.1.0/24` | Public (Cho ALB & NAT 1) |
-| `nutritrack-api-vpc-public-alb02` | ap-southeast-2c | `10.0.2.0/24` | Public (Cho ALB & NAT 2) |
-| `nutritrack-api-vpc-private-ecs01` | ap-southeast-2a | `10.0.3.0/24` | Private (Cho ECS Tasks) |
-| `nutritrack-api-vpc-private-ecs02` | ap-southeast-2c | `10.0.4.0/24` | Private (Cho ECS Tasks) |
+| `spendwise-api-vpc-public-alb01` | ap-southeast-2a | `10.0.1.0/24` | Public (Cho ALB & NAT 1) |
+| `spendwise-api-vpc-public-alb02` | ap-southeast-2c | `10.0.2.0/24` | Public (Cho ALB & NAT 2) |
+| `spendwise-api-vpc-private-ecs01` | ap-southeast-2a | `10.0.3.0/24` | Private (Cho ECS Tasks) |
+| `spendwise-api-vpc-private-ecs02` | ap-southeast-2c | `10.0.4.0/24` | Private (Cho ECS Tasks) |
 
 **Lưu ý:** Sau khi tạo xong, hãy chọn 2 Public Subnet và bật tính năng **`Enable auto-assign public IPv4 address`** trong phần Subnet settings.
 
@@ -71,18 +71,18 @@ Chúng ta sẽ tạo **4 subnets** chia đều trên 2 AZ (`2a` và `2c`):
 ## 3. Internet Gateway & Route Tables
 
 ### 3.1 Internet Gateway (IGW)
-1. Tạo IGW với tên `nutritrack-api-igw`.
-2. Sau khi tạo, hãy **Attach to VPC** vào VPC `nutritrack-api-vpc`.
+1. Tạo IGW với tên `spendwise-api-igw`.
+2. Sau khi tạo, hãy **Attach to VPC** vào VPC `spendwise-api-vpc`.
 
 ### 3.2 Public Route Table
-1. Tạo Route Table tên `nutritrack-api-public-rt`.
+1. Tạo Route Table tên `spendwise-api-public-rt`.
 2. Trong tab **Routes**, thêm route: `0.0.0.0/0` → Target là `Internet Gateway`.
 3. Trong tab **Subnet associations**, gắn (associate) cả 2 Public Subnets vào đây.
 
 ### 3.3 Private Route Tables
 Tạo 2 Route Table riêng biệt cho 2 AZ để sau này cấu hình NAT Instance HA:
-- `nutritrack-api-private-rt-01` (Gắn với Private Subnet 01)
-- `nutritrack-api-private-rt-02` (Gắn với Private Subnet 02)
+- `spendwise-api-private-rt-01` (Gắn với Private Subnet 01)
+- `spendwise-api-private-rt-02` (Gắn với Private Subnet 02)
 
 ---
 
@@ -90,16 +90,16 @@ Tạo 2 Route Table riêng biệt cho 2 AZ để sau này cấu hình NAT Instan
 
 Bạn cần tạo 3 Security Group theo thứ tự logic sau:
 
-### 4.1 ALB Security Group (`nutritrack-api-vpc-alb-sg`)
+### 4.1 ALB Security Group (`spendwise-api-vpc-alb-sg`)
 - **Inbound Rule**: Cho phép `HTTP` (Port 80) từ `0.0.0.0/0`.
 - **Lưu ý**: Sau khi triển khai xong Lambda, bạn nên đổi Source về SG của Lambda để bảo mật hơn.
 
-### 4.2 ECS Security Group (`nutritrack-api-vpc-ecs-sg`)
-- **Inbound Rule**: Chỉ cho phép `Custom TCP` (Port 8000) từ Source là `nutritrack-api-vpc-alb-sg`.
+### 4.2 ECS Security Group (`spendwise-api-vpc-ecs-sg`)
+- **Inbound Rule**: Chỉ cho phép `Custom TCP` (Port 3000) từ Source là `spendwise-api-vpc-alb-sg`.
 - **Outbound Rule**: Cho phép gửi traffic đến NAT SG và S3 Prefix List.
 
-### 4.3 NAT Instance Security Group (`nutritrack-api-vpc-nat-sg`)
-- **Inbound Rule**: Cho phép **All traffic** từ Source là `nutritrack-api-vpc-ecs-sg`. Cho phép `SSH` (Port 22) từ IP máy cá nhân của bạn.
+### 4.3 NAT Instance Security Group (`spendwise-api-vpc-nat-sg`)
+- **Inbound Rule**: Cho phép **All traffic** từ Source là `spendwise-api-vpc-ecs-sg`. Cho phép `SSH` (Port 22) từ IP máy cá nhân của bạn.
 - **Outbound Rule**: Cho phép **All traffic** ra `0.0.0.0/0`.
 
 ---

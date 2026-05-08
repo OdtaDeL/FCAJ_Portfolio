@@ -26,12 +26,11 @@ Hướng dẫn này cung cấp quy trình từng bước hoàn chỉnh để tri
 ## Nội dung thực hành
 
 1. [Tổng quan & Kiến trúc](4.1-Overview/)
-2. [Thiết lập VPC & Terraform Foundation](4.2-Infrastructure/)
-3. [Triển khai Identity với Amazon Cognito](4.3-Cognito/)
-4. [Container hóa Backend & ECS Fargate](4.4-Backend-ECS/)
-5. [Cấu hình Amazon RDS & Cơ sở dữ liệu](4.5-Database/)
-6. [Triển khai Frontend Amplify & HTTPS](4.6-Frontend/)
-7. [Giám sát CloudWatch & Dọn dẹp](4.7-Cleanup/)
+2. [Điều kiện tiên quyết](4.2-Prerequiste/)
+3. [Thiết lập Frontend](4.3-Frontend/)
+4. [Thiết lập Backend](4.4-Backend/)
+5. [Triển khai ECS Fargate](4.5-ECS-Fargate/)
+6. [Dọn dẹp](4.6-Cleanup/)
 
 ## Ước tính chi phí
 
@@ -42,12 +41,12 @@ Dưới đây là bảng ước tính chi phí duy trì hệ thống SpendWise t
 | Application Load Balancer (ALB) | $26.00                | $0.866       |
 | Amazon ECS Fargate    | $17.00                   | $0.566       |
 | Amazon RDS PostgreSQL | $23.50                   | $0.783       |
-| Amazon VPC Endpoints  | $45.00                   | $1.500       |
+| NAT Instance          | $4.33                    | $0.144       |
 | AWS WAF               | $6.00                    | $0.200       |
 | AWS Amplify           | $4.50                    | $0.150       |
 | AWS Secrets Manager   | $1.20                    | $0.040       |
 | Amazon Route 53       | $0.90                    | $0.030       |
-| **Tổng cộng**         | **$124.10**              | **$4.135**   |
+| **Tổng cộng**         | **$83.43**               | **$2.779**   |
 
 ---
 

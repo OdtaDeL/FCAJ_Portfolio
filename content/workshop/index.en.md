@@ -26,12 +26,11 @@ This guide provides a complete step-by-step process for deploying **SpendWise** 
 ## Workshop Content
 
 1. [Overview & Architecture](4.1-Overview/)
-2. [VPC Setup & Terraform Foundation](4.2-Infrastructure/)
-3. [Identity Deployment with Amazon Cognito](4.3-Cognito/)
-4. [Backend Containerization & ECS Fargate](4.4-Backend-ECS/)
-5. [Amazon RDS Configuration & Database](4.5-Database/)
-6. [Amplify Frontend Deployment & HTTPS](4.6-Frontend/)
-7. [CloudWatch Monitoring & Cleanup](4.7-Cleanup/)
+2. [Prerequisites](4.2-Prerequiste/)
+3. [Frontend Setup](4.3-Frontend/)
+4. [Backend Setup](4.4-Backend/)
+5. [ECS Fargate Deployment](4.5-ECS-Fargate/)
+6. [Cleanup](4.6-Cleanup/)
 
 ## Cost Estimation
 
@@ -42,12 +41,12 @@ Below is an estimated monthly cost for maintaining the SpendWise system on AWS b
 | Application Load Balancer (ALB)       | $26.00                 | $0.866      |
 | Amazon ECS Fargate                    | $17.00                 | $0.566      |
 | Amazon RDS PostgreSQL                 | $23.50                 | $0.783      |
-| Amazon VPC Endpoints                  | $45.00                 | $1.500      |
+| NAT Instance                          | $4.33                  | $0.144      |
 | AWS WAF                               | $6.00                  | $0.200      |
 | AWS Amplify                           | $4.50                  | $0.150      |
 | AWS Secrets Manager                   | $1.20                  | $0.040      |
 | Amazon Route 53                       | $0.90                  | $0.030      |
-| **Total**                             | **$124.10**            | **$4.135**  |
+| **Total**                             | **$83.43**             | **$2.779**  |
 
 ---
 

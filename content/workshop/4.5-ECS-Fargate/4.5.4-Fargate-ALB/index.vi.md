@@ -13,17 +13,11 @@ _TBD._
 
 ## Content
 
-﻿Đây là bước cuối cùng để hoàn thiện hệ thống: Build Docker image, đẩy lên registry, và thiết lập cụm ECS Fargate cùng Application Load Balancer (ALB) để phục vụ các yêu cầu từ internet.
+﻿Đây là bước cuối cùng để hoàn thiện việc triển khai API SpendWise: build Docker image cho service NestJS, đẩy lên registry, và thiết lập cụm ECS Fargate cùng Application Load Balancer (ALB).
 
 ## 1. Build & Push Docker Image
 
-Chúng ta cần có một Docker Image chứa mã nguồn FastAPI (Python) được tối ưu cho kiến trúc ARM64 của AWS Graviton.
-
-### Clone mã nguồn (Ví dụ)
-```bash
-git clone https://github.com/justHman/NUTRI_TRACK_API
-cd NUTRI_TRACK_API
-```
+Chúng ta cần có một Docker image chứa mã nguồn NestJS của SpendWise được tối ưu cho kiến trúc ARM64 của AWS Graviton.
 
 ### Build và Push lên Docker Hub
 ```bash
@@ -33,7 +27,7 @@ docker login
 # Build multi-platform (ARM64) và push trực tiếp
 docker buildx build \
   --platform linux/arm64 \
-  --tag <username>/nutritrack-api:latest \
+  --tag <username>/spendwise-api:latest \
   --push .
 ```
 
@@ -42,7 +36,7 @@ docker buildx build \
 ## 2. Khởi tạo ECS Cluster
 
 1. Vào **ECS Console** → **Clusters** → **Create cluster**.
-2. **Cluster name**: `nutritrack-api-cluster`.
+2. **Cluster name**: `spendwise-api-cluster`.
 3. **Infrastructure**: Chọn `AWS Fargate (serverless)`.
 4. Nhấn **Create**.
 
@@ -57,9 +51,9 @@ Task Definition chỉ định image nào sẽ chạy, tài nguyên CPU/RAM và c
 3. **CPU**: `1 vCPU`, **Memory**: `2 GB`.
 4. **Task Execution Role**: `ecsTaskExecutionRole`.
 5. **Container Details**:
-   - **Name**: `nutritrack-api-container`
-   - **Image**: `<username>/nutritrack-api:latest`
-   - **Port mapping**: `8000` (TCP).
+  - **Name**: `spendwise-api-container`
+  - **Image**: `<username>/spendwise-api:latest`
+  - **Port mapping**: `3000` (TCP).
 6. **Environment variables**: Inject các API Keys từ Secrets Manager sử dụng cú pháp `ValueFrom`.
 
 ---
@@ -68,19 +62,19 @@ Task Definition chỉ định image nào sẽ chạy, tài nguyên CPU/RAM và c
 
 ALB đóng vai trò tiếp nhận traffic từ người dùng và phân phối đến các container của ECS.
 
-1. **Target Group**: Tạo Target Group tên `nutritrack-api-tg`, port 8000, type **IP**. Health check path: `/health`.
-2. **Load Balancer**: Tạo ALB loại **Internet-facing**, chọn các Public Subnet đã tạo ở bước 5.5.1.
-3. **Security Group**: Gắn `nutritrack-api-vpc-alb-sg`.
+1. **Target Group**: Tạo Target Group tên `spendwise-api-tg`, port 3000, type **IP**. Health check path: `/health`.
+2. **Load Balancer**: Tạo ALB loại **Internet-facing**, chọn các Public Subnet đã tạo ở bước 4.5.1.
+3. **Security Group**: Gắn `spendwise-api-vpc-alb-sg`.
 4. **Listener**: Chuyển hướng traffic từ port 80 sang Target Group vừa tạo.
 
 ---
 
 ## 5. Cấu hình Bảo mật với AWS WAF
 
-Hãy chèn thêm một lớp bảo mật (WAF) để ngăn chặn các cuộc tấn công brute-force và đảm bảo chỉ Lambda `scan-image` mới có quyền gọi đến ALB.
+Hãy chèn thêm một lớp bảo mật (WAF) để giảm brute-force và bot traffic. Với SpendWise, API phải chỉ chấp nhận request đã xác thực từ frontend và client tin cậy.
 
 - **Rate Limit**: Giới hạn mỗi IP tối đa 100 request trong 5 phút.
-- **Custom Header**: Chỉ chấp nhận request có header `Authorization: Bearer <token>`.
+- **JWT-based access**: Bảo vệ API bằng token do Cognito phát hành.
 
 ---
 
@@ -99,14 +93,14 @@ Cuối cùng, hãy tạo Service để duy trì số lượng task luôn chạy.
 
 ## Kết quả đạt được:
 
-Hệ thống của bạn hiện đã hoàn thiện:
-- Một Mobile App kết nối với Amplify Gen 2.
-- Các tác vụ AI nặng được xử lý bởi FastAPI trên ECS Fargate.
-- Toàn bộ được bảo mật trong một VPC riêng với NAT tối ưu chi phí.
+Backend SpendWise của bạn hiện đã hoàn thiện:
+- API NestJS chạy trên ECS Fargate.
+- Kết nối riêng tư tới RDS PostgreSQL.
+- Lưu lượng công khai được kiểm soát bởi ALB và WAF.
 
 ---
 
-[Tiếp tục đến 4.6 CI/CD](../../4.6-CICD/)
+[Tiếp tục đến 4.6 Dọn Dẹp](../../4.6-Cleanup/)
 
 ## Conclusion
 

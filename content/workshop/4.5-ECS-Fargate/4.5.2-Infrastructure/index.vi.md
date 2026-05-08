@@ -14,37 +14,37 @@ _TBD._
 
 ## Content
 
-﻿Phần này hướng dẫn thiết lập ba thành phần hạ tầng quan trọng hỗ trợ cho cụm ECS Fargate: **S3 Bucket** để lưu trữ cache, **Secrets Manager** để quản lý API keys bảo mật, và **IAM Roles** để cấp quyền thực thi.
+﻿Phần này hướng dẫn thiết lập các thành phần hạ tầng hỗ trợ cho cụm ECS Fargate của SpendWise: **ECR** để lưu Docker image, **Secrets Manager** để quản lý credentials an toàn, và **IAM Roles** để cấp quyền thực thi.
 
 > **Điều kiện tiên quyết:** Đã hoàn thành [4.5.1 Hạ tầng Mạng (VPC & Network)](../4.5.1-VPC-Network/).
 
 ---
 
-## 1. S3 Bucket (Cache Layer)
+## 1. Amazon ECR (Container Registry)
 
-Chúng ta cần một S3 Bucket để cache kết quả từ các API bên ngoài (USDA, OpenFoodFacts, Avocavo). Việc này giúp giảm độ trễ và tiết kiệm chi phí gọi API.
+Chúng ta cần một Amazon ECR repository để lưu Docker image dùng cho container API của SpendWise.
 
-### 1.1 Tạo S3 Bucket
-1. Vào AWS Console → **S3** → **Create bucket**.
-2. **Bucket name**: `nutritrack-cache-xxxx` (tên phải duy nhất toàn cầu, bạn nên thêm ngày tháng hoặc tên cá nhân).
-3. **Region**: `ap-southeast-2`.
-4. **Block all public access**: ✅ Bật (Mặc định).
-5. Nhấn **Create bucket**.
+### 1.1 Tạo ECR Repository
+1. Vào AWS Console → **ECR** → **Repositories** → **Create repository**.
+2. **Repository name**: `spendwise-api`.
+3. **Visibility**: Private.
+4. Nhấn **Create repository**.
 
 ---
 
 ## 2. Secrets Manager
 
-Secrets Manager giúp lưu trữ API keys một cách an toàn và tự động inject vào container dưới dạng biến môi trường, tránh việc lộ plaintext trong mã nguồn.
+Secrets Manager giúp lưu trữ database credentials, JWT secrets, và cài đặt Cognito một cách an toàn rồi inject vào container dưới dạng biến môi trường.
 
 ### 2.1 Tạo Secret
 1. Vào **Secrets Manager** → **Store a new secret**.
 2. Chọn **Secret type**: `Other type of secret`.
 3. Thêm các cặp **Key/value** sau:
-   - `USDA_API_KEY`: <Key của bạn>
-   - `AVOCAVO_API_KEY`: <Key của bạn>
-   - `NUTRITRACK_API_KEY`: <Secret dùng chung cho JWT giữa Lambda và ECS>
-4. Đặt tên Secret: `nutritrack/prod/api-keys`.
+  - `DB_HOST`: <RDS endpoint>
+  - `DB_USER`: <Database user>
+  - `DB_PASSWORD`: <Database password>
+  - `JWT_SECRET`: <Shared JWT secret>
+4. Đặt tên Secret: `spendwise/prod/backend-credentials`.
 5. Sau khi lưu, hãy copy mã **ARN** của Secret này để dùng cho bước tiếp theo.
 
 ---
@@ -56,7 +56,7 @@ ECS sử dụng hai Role riêng biệt cho hai mục đích khác nhau:
 | Role Name | Đối tượng sử dụng | Mục đích |
 | :--- | :--- | :--- |
 | **`ecsTaskExecutionRole`** | AWS ECS Agent | Pull Docker image, gửi log về CloudWatch, đọc Secrets Manager. |
-| **`ecsTaskRole`** | Ứng dụng bên trong container | Gọi Amazon Bedrock, đọc/ghi dữ liệu vào S3 Cache. |
+| **`ecsTaskRole`** | Ứng dụng bên trong container | Đọc credentials RDS, truy cập Secrets Manager, ghi logs khi cần. |
 
 ### 3.1 Cấu hình `ecsTaskExecutionRole`
 1. Tìm hoặc tạo Role tên `ecsTaskExecutionRole`.
@@ -78,7 +78,7 @@ ECS sử dụng hai Role riêng biệt cho hai mục đích khác nhau:
 
 ### 3.2 Tạo `ecsTaskRole`
 1. Tạo Role mới với Trusted Entity là `Elastic Container Service Task`.
-2. Gắn **Inline Policy** cho phép truy cập Bedrock và S3 Bucket cache:
+2. Gắn **Inline Policy** cho phép truy cập Secrets Manager và các AWS API cần thiết cho backend:
 
 ```json
 {
@@ -86,15 +86,15 @@ ECS sử dụng hai Role riêng biệt cho hai mục đích khác nhau:
   "Statement": [
     {
       "Effect": "Allow",
-      "Action": ["bedrock:InvokeModel", "bedrock:ListFoundationModels"],
+      "Action": ["secretsmanager:GetSecretValue"],
       "Resource": "*"
     },
     {
       "Effect": "Allow",
       "Action": ["s3:GetObject", "s3:PutObject", "s3:ListBucket"],
       "Resource": [
-        "arn:aws:s3:::nutritrack-cache-xxxx",
-        "arn:aws:s3:::nutritrack-cache-xxxx/*"
+        "arn:aws:s3:::spendwise-cache-xxxx",
+        "arn:aws:s3:::spendwise-cache-xxxx/*"
       ]
     }
   ]

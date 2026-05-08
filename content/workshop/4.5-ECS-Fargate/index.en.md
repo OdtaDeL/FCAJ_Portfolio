@@ -13,7 +13,7 @@ status: published
 
 ## Overview
 
-This section covers the ECS Fargate layer for SpendWise. The containerized backend runs alongside the Amplify backend and is used for parts of the system that fit better in a container, such as the NestJS API, longer-running work, or anything that needs a persistent runtime.
+This section covers the ECS Fargate layer for SpendWise. The containerized backend is the NestJS API that serves transactions, budgets, categories, and user data behind an Application Load Balancer.
 
 ## What You Will Learn
 
@@ -32,11 +32,11 @@ This section covers the ECS Fargate layer for SpendWise. The containerized backe
 
 ## Content
 
-The ECS Fargate layer runs the container part of SpendWise. It is a good fit for the NestJS API and any task that should stay alive longer than a Lambda function usually would.
+The ECS Fargate layer runs the SpendWise API container. It is the right fit for the NestJS service because the API needs a stable runtime, direct database connectivity to RDS, and predictable networking behind an ALB.
 
 ## System Architecture
 
-![SpendWise API VPC Architecture](images/only-nutritrack-api-vpc.drawio.svg)
+![SpendWise API VPC Architecture](images/only-spendwise-api-vpc.drawio.svg)
 
 The ECS tasks run in a **Private Subnet** for security, while an **Application Load Balancer (ALB)** sits in the **Public Subnet** and receives traffic from the internet. Tasks reach AWS services through a **NAT Instance** or through service endpoints where possible.
 
@@ -62,7 +62,7 @@ The ECS tasks run in a **Private Subnet** for security, while an **Application L
 
 ---
 
-[Continue to 4.6 CI/CD Deployment](../4.6-CICD/)
+[Continue to 4.6 Cleanup](../4.6-Cleanup/)
 
 ## Conclusion
 

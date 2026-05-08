@@ -22,11 +22,11 @@ Chúng ta sẽ sử dụng instance type `t4g.nano` (kiến trúc ARM Graviton) 
 2. **AMI**: Chọn **Amazon Linux 2023** (Bản 64-bit Arm).
 3. **Instance Type**: `t4g.nano`.
 4. **Network Settings**:
-   - VPC: `nutritrack-api-vpc`
-   - Subnet: `nutritrack-api-vpc-public-alb01` (Public Subnet)
+   - VPC: `spendwise-api-vpc`
+   - Subnet: `spendwise-api-vpc-public-alb01` (Public Subnet)
    - Auto-assign Public IP: **Enable**
-   - Security Group: `nutritrack-api-vpc-nat-sg`
-5. **IAM instance profile**: Chọn `nutritrack-api-vpc-nat-instance-role`.
+   - Security Group: `spendwise-api-vpc-nat-sg`
+5. **IAM instance profile**: Chọn `spendwise-api-vpc-nat-instance-role`.
 6. Nhấn **Launch instance**.
 
 > [!IMPORTANT]

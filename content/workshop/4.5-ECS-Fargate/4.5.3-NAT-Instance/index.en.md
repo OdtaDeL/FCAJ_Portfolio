@@ -36,11 +36,11 @@ We use a `t4g.nano` instance (ARM Graviton) for optimal cost and performance.
 2. **AMI**: Select **Amazon Linux 2023** (64-bit Arm).
 3. **Instance Type**: `t4g.nano`.
 4. **Network Settings**:
-   - VPC: `nutritrack-api-vpc`
-   - Subnet: `nutritrack-api-vpc-public-alb01` (Public Subnet)
+   - VPC: `spendwise-api-vpc`
+   - Subnet: `spendwise-api-vpc-public-alb01` (Public Subnet)
    - Auto-assign Public IP: **Enable**
-   - Security Group: `nutritrack-api-vpc-nat-sg`
-5. **IAM instance profile**: Select `nutritrack-api-vpc-nat-instance-role`.
+   - Security Group: `spendwise-api-vpc-nat-sg`
+5. **IAM instance profile**: Select `spendwise-api-vpc-nat-instance-role`.
 6. Click **Launch instance**.
 
 > [!IMPORTANT]

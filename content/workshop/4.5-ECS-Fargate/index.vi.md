@@ -12,7 +12,7 @@ status: published
 
 ## Overview
 
-Phần này nói về tầng ECS Fargate của SpendWise. Backend container sẽ chạy song song với backend Amplify và dùng cho những phần phù hợp hơn với container, như API NestJS, các tác vụ chạy lâu hơn hoặc những xử lý cần runtime ổn định.
+Phần này nói về tầng ECS Fargate của SpendWise. Backend container chính là API NestJS, chạy sau ALB để phục vụ các chức năng quản lý giao dịch, budget, danh mục và dữ liệu người dùng.
 
 ## What You Will Learn
 
@@ -31,11 +31,11 @@ Phần này nói về tầng ECS Fargate của SpendWise. Backend container sẽ
 
 ## Content
 
-Tầng ECS Fargate chạy phần container của SpendWise. Đây là nơi phù hợp cho API NestJS và các công việc không nên nhét vào Lambda.
+Tầng ECS Fargate chạy phần container của SpendWise. Đây là nơi phù hợp cho API NestJS vì cần runtime ổn định, kết nối trực tiếp tới RDS PostgreSQL và vận hành phía sau ALB.
 
 ## Kiến trúc Hệ thống
 
-![Kiến trúc API VPC của SpendWise](images/only-nutritrack-api-vpc.drawio.svg)
+![Kiến trúc API VPC của SpendWise](images/only-spendwise-api-vpc.drawio.svg)
 
 Các ECS task chạy trong **Private Subnet** để đảm bảo an toàn, còn **Application Load Balancer (ALB)** nằm ở **Public Subnet** để nhận traffic từ internet. Task truy cập các dịch vụ AWS thông qua **NAT Instance** hoặc thông qua endpoint khi có thể.
 
@@ -61,7 +61,7 @@ Các ECS task chạy trong **Private Subnet** để đảm bảo an toàn, còn 
 
 ---
 
-[Tiếp tục đến 4.6 CI/CD](../4.6-CICD/)
+[Tiếp tục đến 4.6 Dọn Dẹp](../4.6-Cleanup/)
 
 ## Kết luận
 

@@ -14,11 +14,11 @@ _TBD._
 
 ## Content
 
-﻿This is the final step to complete the system: Build the Docker image, push it to a registry, and set up the ECS Fargate cluster and Application Load Balancer (ALB) to handle internet traffic.
+﻿This is the final step to complete the SpendWise API deployment: build the Docker image for the NestJS service, push it to a registry, and set up the ECS Fargate cluster and Application Load Balancer (ALB).
 
 ## 1. Build & Push Docker Image
 
-We need a Docker Image containing the FastAPI (Python) source code, optimized for the AWS Graviton (ARM64) architecture.
+We need a Docker image containing the SpendWise NestJS source code, optimized for the AWS Graviton (ARM64) architecture.
 
 ### Build and Push to Docker Hub
 ```bash
@@ -28,7 +28,7 @@ docker login
 # Build multi-platform (ARM64) and push
 docker buildx build \
   --platform linux/arm64 \
-  --tag <username>/nutritrack-api:latest \
+  --tag <username>/spendwise-api:latest \
   --push .
 ```
 
@@ -37,7 +37,7 @@ docker buildx build \
 ## 2. Initialize ECS Cluster
 
 1. Go to **ECS Console** → **Clusters** → **Create cluster**.
-2. **Cluster name**: `nutritrack-api-cluster`.
+2. **Cluster name**: `spendwise-api-cluster`.
 3. **Infrastructure**: Select `AWS Fargate (serverless)`.
 4. Click **Create**.
 
@@ -52,9 +52,9 @@ The Task Definition specifies which image to run, CPU/RAM resources, and require
 3. **CPU**: `1 vCPU`, **Memory**: `2 GB`.
 4. **Task Execution Role**: `ecsTaskExecutionRole`.
 5. **Container Details**:
-   - **Name**: `nutritrack-api-container`
-   - **Image**: `<username>/nutritrack-api:latest`
-   - **Port mapping**: `8000` (TCP).
+  - **Name**: `spendwise-api-container`
+  - **Image**: `<username>/spendwise-api:latest`
+  - **Port mapping**: `3000` (TCP).
 
 ---
 
@@ -62,19 +62,19 @@ The Task Definition specifies which image to run, CPU/RAM resources, and require
 
 ALB receives user traffic and distributes it to the ECS containers.
 
-1. **Target Group**: Create `nutritrack-api-tg`, port 8000, type **IP**. Health check path: `/health`.
-2. **Load Balancer**: Create an **Internet-facing** ALB, select the Public Subnets created in 5.5.1.
-3. **Security Group**: Attach `nutritrack-api-vpc-alb-sg`.
+1. **Target Group**: Create `spendwise-api-tg`, port 3000, type **IP**. Health check path: `/health`.
+2. **Load Balancer**: Create an **Internet-facing** ALB, select the Public Subnets created in 4.5.1.
+3. **Security Group**: Attach `spendwise-api-vpc-alb-sg`.
 4. **Listener**: Route port 80 traffic to the Target Group.
 
 ---
 
 ## 5. Security with AWS WAF
 
-Add a security layer (WAF) to prevent brute-force attacks and ensure only the `scan-image` Lambda can call the ALB.
+Add a security layer (WAF) to reduce brute-force and bot traffic. For SpendWise, the API should only accept authenticated requests from the frontend and trusted clients.
 
 - **Rate Limit**: Max 100 requests per IP per 5 minutes.
-- **Custom Header**: Accept only requests with an `Authorization: Bearer <token>` header.
+- **JWT-based access**: Protect the API with Cognito-issued tokens.
 
 ---
 
@@ -93,14 +93,14 @@ Finally, create a Service to maintain the running tasks.
 
 ## Summary of Achievement:
 
-Your system is now complete:
-- A Mobile App connected to Amplify Gen 2.
-- Heavy AI tasks processed by FastAPI on ECS Fargate.
-- Fully secured within a private VPC with cost-optimized NAT.
+Your SpendWise backend is now complete:
+- A NestJS API running on ECS Fargate.
+- Private networking to RDS PostgreSQL.
+- Public traffic controlled by ALB and WAF.
 
 ---
 
-[Continue to 4.6 CI/CD](../../4.6-CICD/)
+[Continue to 4.6 Cleanup](../../4.6-Cleanup/)
 
 ## Conclusion
 
