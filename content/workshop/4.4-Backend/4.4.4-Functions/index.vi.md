@@ -1,70 +1,138 @@
 
-
 ## Overview
 
-_TBD._
+Phần này bao gồm việc xây dựng các core API endpoints cho SpendWise sử dụng NestJS controllers và services. Bạn sẽ implement các endpoints để quản lý giao dịch, theo dõi budget, và quản lý danh mục chi tiêu.
 
 ## What You Will Learn
 
-_TBD._
+- Tạo NestJS controllers cho các REST API endpoints.
+- Implement services chứa business logic.
+- Xử lý CRUD operations cho Transactions, Budgets, và Categories.
+- Sử dụng dependency injection và decorators.
+- Implement error handling và validation.
 
 ## Requirements
 
-_TBD._
+- Hoàn thành phần 4.4.3 Storage & Configuration setup.
+- Hiểu biết về NestJS architecture (Controllers, Services, Modules).
+- Kiến thức về thiết kế REST API.
+- Quen thuộc với TypeORM repositories.
 
 ## Content
 
-﻿## Các hàm chính trong dự án
+## Lớp API Endpoints
 
-### 1. `ai-engine` — Bộ não AI
-Sử dụng SDK của Amazon Bedrock để gọi mô hình Qwen3-VL.
-- **Thư mục**: `amplify/ai-engine/`
+Backend của SpendWise expose các REST endpoints để quản lý dữ liệu tài chính. Kiến trúc tuân theo best practices của NestJS với phân chia trách nhiệm: Controllers xử lý HTTP requests, Services chứa business logic, và Repositories quản lý database operations.
 
-### 2. `scan-image` — Phân tích Hình ảnh (Proxy)
-Đóng vai trò trung gian gửi yêu cầu tới tầng ECS Fargate.
-- **Thư mục**: `amplify/scan-image/`
+### 1. Transaction Controller & Service
 
-### 3. `process-nutrition` — Xử lý Dinh dưỡng
-Tính toán Macros từ kết quả AI và ghi vào DynamoDB.
-- **Thư mục**: `amplify/process-nutrition/`
+**Controller** (`controllers/transactions.controller.ts`):
 
-### 4. `resize-image` — Tối ưu Hình ảnh
-Sử dụng thư viện `sharp` (qua Lambda Layer) để tạo Thumbnail.
-- **Thư mục**: `amplify/resize-image/`
+```typescript
+import { Controller, Get, Post, Body, UseGuards, Param, Delete } from '@nestjs/common';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+import { CurrentUser } from '../auth/decorators/current-user.decorator';
+import { TransactionsService } from '../services/transactions.service';
+import { CreateTransactionDto } from '../dtos/create-transaction.dto';
 
-### 5. `friend-request` — Hệ thống Kết bạn
-Xử lý các Mutation yêu cầu kết bạn và cập nhật bảng Friendship.
-- **Thư mục**: `amplify/friend-request/`
+@Controller('api/transactions')
+@UseGuards(JwtAuthGuard)
+export class TransactionsController {
+  constructor(private readonly transactionsService: TransactionsService) {}
 
-## Cách định nghĩa Function trong Amplify Gen 2
+  @Get()
+  async getTransactions(@CurrentUser() user: any) {
+    return this.transactionsService.getUserTransactions(user.userId);
+  }
 
-Trong Amplify Gen 2, mỗi Lambda function thường bao gồm hai tệp cốt lõi nằm trong thư mục riêng của nó (ví dụ: `amplify/my-func/`):
+  @Post()
+  async createTransaction(
+    @CurrentUser() user: any,
+    @Body() dto: CreateTransactionDto,
+  ) {
+    return this.transactionsService.createTransaction(user.userId, dto);
+  }
 
-1.  **`resource.ts`**: Định nghĩa tài nguyên (tên, thời gian timeout, bộ nhớ, quyền truy cập).
-2.  **`handler.ts`**: Chứa mã nguồn thực thi chính của hàm.
+  @Delete(':id')
+  async deleteTransaction(@Param('id') id: string) {
+    return this.transactionsService.deleteTransaction(id);
+  }
+}
+```
 
-### Quy trình tạo một hàm mới:
-1.  Tạo thư mục: `mkdir -p amplify/[tên-hàm]`
-2.  Tạo tệp `resource.ts` để cấu hình function.
-3.  Tạo tệp `handler.ts` để viết logic.
-4.  Export function vào tệp `amplify/backend.ts`.
+### 2. Budget Controller & Service
+
+**Controller** (`controllers/budgets.controller.ts`):
+
+```typescript
+import { Controller, Get, Post, Body, UseGuards, Put, Param } from '@nestjs/common';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+import { CurrentUser } from '../auth/decorators/current-user.decorator';
+import { BudgetsService } from '../services/budgets.service';
+
+@Controller('api/budgets')
+@UseGuards(JwtAuthGuard)
+export class BudgetsController {
+  constructor(private readonly budgetsService: BudgetsService) {}
+
+  @Get()
+  async getBudgets(@CurrentUser() user: any) {
+    return this.budgetsService.getUserBudgets(user.userId);
+  }
+
+  @Post()
+  async createBudget(@CurrentUser() user: any, @Body() dto: any) {
+    return this.budgetsService.createBudget(user.userId, dto);
+  }
+
+  @Put(':id')
+  async updateBudget(@Param('id') id: string, @Body() dto: any) {
+    return this.budgetsService.updateBudget(id, dto);
+  }
+}
+```
+
+### 3. Category Controller & Service
+
+**Controller** (`controllers/categories.controller.ts`):
+
+```typescript
+import { Controller, Get, UseGuards } from '@nestjs/common';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+import { CategoriesService } from '../services/categories.service';
+
+@Controller('api/categories')
+@UseGuards(JwtAuthGuard)
+export class CategoriesController {
+  constructor(private readonly categoriesService: CategoriesService) {}
+
+  @Get()
+  async getCategories() {
+    return this.categoriesService.getAllCategories();
+  }
+}
+```
 
 ---
 
-## Chi tiết mã nguồn các hàm:
+## Tóm tắt API Endpoints
 
-Dưới đây là mã nguồn skeleton cho từng hàm. Bạn hãy tạo các tệp tương ứng và dán mã nguồn thực tế của mình vào:
-
-1. [Function ai-engine (Bedrock)](4.4.4.1-AIEngine/)
-2. [Function scan-image (ECS Proxy)](4.4.4.2-ScanImage/)
-3. [Function process-nutrition (Logic & DB)](4.4.4.3-ProcessNutrition/)
-4. [Function friend-request (Social logic)](4.4.4.4-FriendRequest/)
-5. [Function resize-image (S3 Trigger & Sharp)](4.4.4.5-ResizeImage/)
+| Endpoint | Method | Mô Tả |
+|----------|--------|-------|
+| `/api/transactions` | GET | Lấy tất cả giao dịch của user |
+| `/api/transactions` | POST | Tạo giao dịch mới |
+| `/api/transactions/:id` | DELETE | Xóa một giao dịch |
+| `/api/budgets` | GET | Lấy tất cả budgets của user |
+| `/api/budgets` | POST | Tạo budget mới |
+| `/api/budgets/:id` | PUT | Cập nhật budget |
+| `/api/categories` | GET | Lấy tất cả danh mục chi tiêu |
 
 ---
 
-[Tiếp tục đến 4.5 Tầng Container ECS](../4.5-ECS-Fargate/)
+## Bước tiếp theo
 
-## Conclusion
+Với các API endpoints đã được xây dựng và kiểm tra local, bạn đã sẵn sàng chuyển sang [ECS Fargate Deployment](../4.5-ECS-Fargate/) để container hóa và triển khai backend.
 
-_TBD._
+## Kết Luận
+
+Backend NestJS của bạn giờ đã expose một complete REST API cho SpendWise quản lý tài chính. Controllers và Services tuân theo best practices để dễ test, maintain, và bảo mật với JWT-protected endpoints.
