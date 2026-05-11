@@ -1,15 +1,28 @@
 
 ## Overview
 
-_TBD._
+Trong phần cuối cùng này, bạn sẽ hoàn thiện triển khai SpendWise API bằng cách build Docker image của NestJS, đẩy nó lên ECR, và cấu hình cụm ECS Fargate với Application Load Balancer. ALB phục vụ như là điểm vào duy nhất cho tất cả traffic bên ngoài, định tuyến các yêu cầu đến các instances NestJS container chạy trong subnets riêng tư. Bạn cũng sẽ triển khai AWS WAF (Web Application Firewall) để bảo vệ chống lại các cuộc tấn công phổ biến và rate-limit traffic độc hại. Đây là kết thúc của tất cả các phần trước, mang lại cùng nhau mạng, hạ tầng, bảo mật, và tổ chức thành một triển khai API đầy đủ chức năng, sẵn sàng cho sản xuất.
 
 ## What You Will Learn
 
-_TBD._
+- Build Docker images multi-platform (ARM64) được tối ưu hóa cho AWS Graviton
+- Đẩy Docker images lên Amazon ECR
+- Tạo task definitions cho ECS với cấu hình CPU, memory, và environment variables
+- Thiết lập cụm ECS Fargate và services
+- Cấu hình Application Load Balancers (ALB) với target groups và health checks
+- Tích hợp AWS WAF với ALB cho rate limiting và bảo vệ mối đe dọa
+- Triển khai auto-scaling cho ECS services
+- Hiểu tối ưu hóa chi phí với FARGATE_SPOT capacity providers
 
 ## Requirements
 
-_TBD._
+- Hoàn thành [4.5.1 VPC & Networking](../4.5.1-VPC-Network/), [4.5.2 Infrastructure](../4.5.2-Infrastructure/), và [4.5.3 NAT Instance](../4.5.3-NAT-Instance/)
+- SpendWise NestJS backend mã nguồn có sẵn cục bộ với Dockerfile
+- Docker được cài đặt và cấu hình trên máy của bạn
+- Tài khoản Docker Hub hoặc private container registry (để đẩy images)
+- Tài khoản AWS với quyền ECS, ALB, và WAF
+- Task Execution Role (`ecsTaskExecutionRole`) và Task Role (`ecsTaskRole`) được tạo và cấu hình
+- Khoảng 45-60 phút để hoàn thành phần này
 
 ## Content
 
@@ -104,4 +117,4 @@ Backend SpendWise của bạn hiện đã hoàn thiện:
 
 ## Conclusion
 
-_TBD._
+Chúc mừng! Bạn đã hoàn thành thành công triển khai SpendWise API trên AWS. Backend NestJS của bạn hiện đang chạy trên ECS Fargate trên nhiều Availability Zones, được bảo vệ bởi Application Load Balancer và AWS WAF. Tất cả traffic chảy an toàn thông qua ALB, cái phân phối các yêu cầu đến ECS tasks riêng tư. Hạ tầng của bạn có khả năng mở rộng, có tính sẵn sàng cao, và tối ưu hóa chi phí với NAT Instance egress và Fargate Spot capacity. SpendWise API sẵn sàng cho sản xuất và có thể phục vụ các yêu cầu đã xác thực từ ứng dụng frontend với quyền truy cập đầy đủ cơ sở dữ liệu qua RDS PostgreSQL. Tiến hành đến phần [Cleanup](../../4.6-Cleanup/) để tìm hiểu cách an toàn gỡ bỏ các tài nguyên khi triển khai của bạn hoàn tất.

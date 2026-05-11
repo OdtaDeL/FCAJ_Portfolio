@@ -2,15 +2,23 @@
 
 ## Overview
 
-_TBD._
+Trong phần này, bạn sẽ thiết lập các dịch vụ hạ tầng hỗ trợ cho phép triển khai an toàn và đáng tin cậy của SpendWise API trên ECS Fargate. Điều này bao gồm tạo Amazon ECR (Elastic Container Registry) để lưu trữ Docker images của NestJS, cấu hình AWS Secrets Manager để quản lý an toàn thông tin xác thực cơ sở dữ liệu và secrets JWT, và thiết lập các IAM roles cho phép ECS tasks truy cập những tài nguyên này với quyền tối thiểu. Cùng với nhau, những dịch vụ này tạo thành xương sống bảo mật và triển khai của ứng dụng container của bạn.
 
 ## What You Will Learn
 
-_TBD._
+- Tạo private Amazon ECR repository và hiểu workflow push/pull images
+- Cấu hình AWS Secrets Manager để lưu trữ credentials nhạy cảm
+- Thiết lập IAM roles và trust relationships cho tích hợp dịch vụ ECS
+- Hiểu sự khác biệt giữa `ecsTaskExecutionRole` (cho AWS services) và `ecsTaskRole` (cho logic ứng dụng)
+- Thực hiện chính sách truy cập least-privilege
+- Tiêm secrets vào containers dưới dạng environment variables
 
 ## Requirements
 
-_TBD._
+- Hoàn thành [4.5.1 VPC & Networking](../4.5.1-VPC-Network/)
+- Tài khoản AWS với quyền IAM để tạo ECR repositories, Secrets Manager secrets, và IAM roles
+- Kiến thức về RDS endpoint, database credentials, và JWT secret values (từ cấu hình backend)
+- Khoảng 30-40 phút để hoàn thành phần này
 
 ## Content
 
@@ -111,4 +119,4 @@ Hạ tầng nền tảng đã sẵn sàng. Bây giờ chúng ta sẽ tối ưu h
 
 ## Conclusion
 
-_TBD._
+Bạn đã thành công provisioning hạ tầng hỗ trợ cho triển khai SpendWise API. ECR repository của bạn sẵn sàng nhận Docker images của NestJS, Secrets Manager lưu trữ an toàn thông tin xác thực cơ sở dữ liệu và JWT secrets với quyền kiểm soát, và IAM roles được cấu hình với chính sách least-privilege. Lớp hạ tầng này cung cấp nền tảng an toàn để triển khai các ứng dụng container. Bạn hiện đã sẵn sàng cấu hình NAT Instance cho truy cập internet tiết kiệm chi phí từ private subnets.

@@ -2,15 +2,24 @@
 
 ## Overview
 
-_TBD._
+In this section, you'll build the AWS networking foundation for the SpendWise API. This includes creating a private Virtual Private Cloud (VPC), configuring 4 subnets across 2 Availability Zones for high availability, setting up an Internet Gateway for external traffic routing, and establishing security groups to enforce network access policies. This architecture ensures that your NestJS API containers remain secure and isolated while enabling controlled communication with the ALB and external services.
 
 ## What You Will Learn
 
-_TBD._
+- Creating and configuring a VPC with DNS resolution enabled
+- Designing a multi-AZ subnet architecture (2 public, 2 private)
+- Setting up an Internet Gateway for internet connectivity
+- Configuring public and private Route Tables
+- Creating and managing Security Groups for ALB, ECS, and NAT Instance
+- Understanding network segmentation and isolation principles
 
 ## Requirements
 
-_TBD._
+- An AWS account with permissions to create VPC, subnets, security groups, and route tables
+- Access to the AWS Management Console
+- Understanding of CIDR notation and IPv4 addressing (optional but helpful)
+- Approximately 30–45 minutes to complete this section
+- Completion of [4.5 ECS Fargate Overview](../)
 
 ## Content
 
@@ -101,4 +110,4 @@ We will create **4 subnets** distributed across 2 AZs (`2a` and `2c`):
 
 ## Conclusion
 
-_TBD._
+You have successfully built the AWS networking foundation for SpendWise. Your VPC now contains 4 subnets distributed across 2 Availability Zones with proper routing, security group rules, and internet gateway connectivity. This architecture provides high availability and security isolation. Your infrastructure is now ready for the supporting services (ECR, Secrets Manager, IAM) in the next section.

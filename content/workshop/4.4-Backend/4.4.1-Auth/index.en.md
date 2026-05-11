@@ -180,4 +180,4 @@ The system will prompt you to enter values ​​for each variable (taken from t
 
 ## Conclusion
 
-_TBD._
+Your NestJS backend now has a complete JWT authentication layer powered by Amazon Cognito. All API endpoints are protected by the `JwtAuthGuard`, and authenticated requests include user claims (userId, email) extracted from the JWT token. This architecture ensures that only valid, authenticated users can access your SpendWise API resources. The Passport-JWT strategy validates tokens using Cognito's public JWKS endpoint, and the custom `@CurrentUser()` decorator provides convenient access to user information in your controllers. You are now ready to implement the Data Layer (TypeORM entities and database integration) in the next section.

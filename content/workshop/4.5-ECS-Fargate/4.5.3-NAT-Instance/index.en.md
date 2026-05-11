@@ -2,15 +2,25 @@
 
 ## Overview
 
-_TBD._
+In this section, you'll implement a cost-optimized alternative to AWS NAT Gateway by deploying a NAT Instance on EC2. This approach allows private ECS tasks to access external resources (such as package repositories and external APIs) while maintaining security isolation. By using a lightweight t4g.nano instance with ARM Graviton architecture, you'll reduce NAT costs from ~$32/month to approximately $4.33/month. You'll configure IP forwarding and iptables masquerading to enable packet translation, and optionally set up an Auto Scaling Group for high availability.
 
 ## What You Will Learn
 
-_TBD._
+- Understanding NAT Gateway vs. NAT Instance trade-offs (cost, throughput, management)
+- Launching and configuring an EC2 instance as a NAT appliance
+- Disabling source/destination checking to enable packet forwarding
+- Enabling IP forwarding and configuring iptables for NAT masquerading
+- Setting up private subnet route tables to direct outbound traffic through the NAT Instance
+- Implementing high availability with Auto Scaling Groups
+- Monitoring NAT Instance performance and cost
 
 ## Requirements
 
-_TBD._
+- Completion of [4.5.1 VPC & Networking](../4.5.1-VPC-Network/) and [4.5.2 Infrastructure](../4.5.2-Infrastructure/)
+- AWS account with EC2 permissions (launch instances, modify security groups, attach IAM roles)
+- Access to SSH or AWS Systems Manager Session Manager for instance configuration
+- IAM role created for NAT Instance: `spendwise-api-vpc-nat-instance-role`
+- Approximately 25–35 minutes to complete this section
 
 ## Content
 
@@ -83,4 +93,4 @@ The ASG will automatically detect instance failure and launch a replacement. You
 
 ## Conclusion
 
-_TBD._
+You have successfully deployed and configured a cost-optimized NAT Instance for the SpendWise infrastructure. Your NAT Instance now handles outbound internet traffic from private ECS tasks while reducing monthly NAT costs by approximately 87% compared to AWS NAT Gateway. The instance is configured with IP forwarding and iptables masquerading, and optionally protected by an Auto Scaling Group for high availability. Your ECS tasks can now safely access external resources while maintaining network isolation. You are now ready to deploy the NestJS API on ECS Fargate with the Application Load Balancer.

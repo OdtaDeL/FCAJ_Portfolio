@@ -2,15 +2,23 @@
 
 ## Overview
 
-_TBD._
+In this section, you'll set up the supporting infrastructure services that enable secure and reliable deployment of the SpendWise API on ECS Fargate. This includes creating an Amazon ECR (Elastic Container Registry) repository to store your NestJS Docker images, configuring AWS Secrets Manager to securely manage database credentials and JWT secrets, and establishing IAM roles and policies that allow ECS tasks to access these resources with minimal privilege. Together, these services form the security and deployment backbone of your containerized application.
 
 ## What You Will Learn
 
-_TBD._
+- Creating a private Amazon ECR repository and understanding image push/pull workflows
+- Configuring AWS Secrets Manager to store sensitive credentials securely
+- Setting up IAM roles and trust relationships for ECS service integration
+- Understanding the distinction between `ecsTaskExecutionRole` (for AWS services) and `ecsTaskRole` (for application logic)
+- Implementing least-privilege access policies
+- Injecting secrets into containers as environment variables
 
 ## Requirements
 
-_TBD._
+- Completion of [4.5.1 VPC & Networking](../4.5.1-VPC-Network/)
+- AWS account with IAM permissions to create ECR repositories, Secrets Manager secrets, and IAM roles
+- Knowledge of RDS endpoint, database credentials, and JWT secret values (from backend configuration)
+- Approximately 30–40 minutes to complete this section
 
 ## Content
 
@@ -75,4 +83,4 @@ ECS uses two distinct roles for different purposes:
 
 ## Conclusion
 
-_TBD._
+You have successfully provisioned the supporting infrastructure for the SpendWise API deployment. Your ECR repository is ready to receive NestJS Docker images, Secrets Manager securely stores your database credentials and JWT secrets with controlled access, and your IAM roles are configured with least-privilege policies. This infrastructure layer provides the secure foundation for deploying containerized applications. You are now ready to configure the NAT Instance for cost-effective internet access from private subnets.

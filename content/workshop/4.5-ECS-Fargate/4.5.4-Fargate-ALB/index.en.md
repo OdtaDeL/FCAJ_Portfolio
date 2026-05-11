@@ -2,15 +2,28 @@
 
 ## Overview
 
-_TBD._
+In this final section, you'll complete the SpendWise API deployment by building the NestJS Docker image, pushing it to ECR, and configuring the ECS Fargate cluster with an Application Load Balancer. The ALB serves as the single entry point for all external traffic, routing requests to containerized NestJS instances running in private subnets. You'll also implement AWS WAF (Web Application Firewall) to protect against common attacks and rate-limit malicious traffic. This is the culmination of all previous sections, bringing together networking, infrastructure, security, and orchestration into a fully functional, production-ready API deployment.
 
 ## What You Will Learn
 
-_TBD._
+- Building multi-platform (ARM64) Docker images optimized for AWS Graviton
+- Pushing Docker images to Amazon ECR
+- Creating ECS task definitions with CPU, memory, and environment variable configurations
+- Setting up ECS Fargate clusters and services
+- Configuring Application Load Balancers (ALB) with target groups and health checks
+- Integrating AWS WAF with ALB for rate limiting and threat protection
+- Implementing auto-scaling for ECS services
+- Understanding cost optimization with FARGATE_SPOT capacity providers
 
 ## Requirements
 
-_TBD._
+- Completion of [4.5.1 VPC & Networking](../4.5.1-VPC-Network/), [4.5.2 Infrastructure](../4.5.2-Infrastructure/), and [4.5.3 NAT Instance](../4.5.3-NAT-Instance/)
+- SpendWise NestJS backend source code available locally with Dockerfile
+- Docker installed and configured on your machine
+- Docker Hub account or private container registry (for pushing images)
+- AWS account with ECS, ALB, and WAF permissions
+- Task Execution Role (`ecsTaskExecutionRole`) and Task Role (`ecsTaskRole`) created and configured
+- Approximately 45–60 minutes to complete this section
 
 ## Content
 
@@ -104,4 +117,4 @@ Your SpendWise backend is now complete:
 
 ## Conclusion
 
-_TBD._
+Congratulations! You have successfully completed the SpendWise API deployment on AWS. Your NestJS backend is now running on ECS Fargate across multiple Availability Zones, protected by an Application Load Balancer and AWS WAF. All traffic flows securely through the ALB, which distributes requests to private ECS tasks. Your infrastructure is scalable, highly available, and cost-optimized with NAT Instance egress and Fargate Spot capacity. The SpendWise API is production-ready and can now serve authenticated requests from the frontend application with full database access via RDS PostgreSQL. Proceed to the [Cleanup](../../4.6-Cleanup/) section to learn how to safely remove resources when your deployment is complete.
