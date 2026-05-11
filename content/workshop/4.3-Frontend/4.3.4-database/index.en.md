@@ -84,7 +84,7 @@ resource "aws_db_instance" "this" {
 | **random_password** (optional) | If db_password is empty in tfvars, Terraform generates a strong password so nothing sensitive is committed to Git. |
 | **aws_secretsmanager_secret + version** | Stores the **RDS master password** as a secret string; recovery window is configurable (db_password_secret_recovery_window_days — 0 for immediate delete in dev). |
 
-The plaintext value is also passed into the RDS module and composed into **DATABASE_URL** for ECS and the Cognito Lambda via locals in main.tf.
+The plaintext value is also passed into the RDS module and composed into **DATABASE_URL** for ECS and the backend via locals in main.tf.
 
 ### modules/rds — what it creates and why
 

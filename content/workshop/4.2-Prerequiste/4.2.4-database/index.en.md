@@ -9,9 +9,9 @@ You can spread **RDS across multiple AZs** (for example a **primary** and a **st
 
 ### RDS PostgreSQL
 
-**Role:** Primary relational store for the **NestJS** / **Prisma** backend; instances sit in **private data subnets** with Postgres reachable only inside the VPC (module **rds**).
+**Role:** Primary relational store for the **NestJS** / **TypeORM** backend; instances sit in **private data subnets** with Postgres reachable only inside the VPC (module **rds**).
 
-**Why we chose it:** PostgreSQL fits relational data and Prisma; RDS reduces undifferentiated ops (patching, backups baseline) versus self-managed Postgres on EC2.
+**Why we chose it:** PostgreSQL fits relational data and TypeORM; RDS reduces undifferentiated ops (patching, backups baseline) versus self-managed Postgres on EC2.
 
 ### RDS Security Group (data-tier firewall)
 
@@ -21,7 +21,7 @@ You can spread **RDS across multiple AZs** (for example a **primary** and a **st
 
 ### Secrets Manager (DB password)
 
-**Role:** Holds the **RDS master password** as a secret for wiring into the app/Lambda via IAM instead of hard-coding (module **db_password_secret** when create_rds).
+**Role:** Holds the **RDS master password** as a secret for wiring into the backend via IAM instead of hard-coding (module **db_password_secret** when create_rds).
 
 **Why we chose it:** Keeps secrets out of Git and plain env files; rotation and access policy are AWS-native.
 

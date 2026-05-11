@@ -85,7 +85,7 @@ resource "aws_db_instance" "this" {
 | **random_password** (tùy) | Nếu db_password để trống trong tfvars, Terraform tự sinh mật khẩu mạnh, tránh commit secret lên Git. |
 | **aws_secretsmanager_secret + version** | Lưu **mật khẩu RDS** dạng secret string; cửa sổ khôi phục cấu hình qua db_password_secret_recovery_window_days (0 = xóa ngay, phù hợp dev). |
 
-Giá trị plaintext cũng được đưa vào module RDS và ghép **DATABASE_URL** cho ECS và Lambda Cognito qua locals trong main.tf.
+Giá trị plaintext cũng được đưa vào module RDS và ghép **DATABASE_URL** cho ECS và backend qua locals trong main.tf.
 
 ### modules/rds — tài nguyên và vai trò
 

@@ -13,6 +13,6 @@ Phần này giới thiệu **AWS Amplify** cho hosting frontend và **Amazon Cog
 
 ### Cognito
 
-**Vai trò:** **User Pool** và **App client** phục vụ đăng ký, đăng nhập và cấp token; có thể gắn **Lambda trigger** (ví dụ **PostConfirmation** đồng bộ user vào RDS).
+**Vai trò:** **User Pool** và **App client** phục vụ đăng ký, đăng nhập và cấp token.
 
-**Lý do chọn:** Dịch vụ xác thực do AWS vận hành, JWT chuẩn, tích hợp frontend và Lambda — tránh phải tự dựng và bảo trì máy chủ xác thực riêng. Hiệu quả mạnh mẽ và linh hoạt trong việc Scale.
+**Lý do chọn:** Dịch vụ xác thực do AWS vận hành, JWT chuẩn, tích hợp frontend và backend — tránh phải tự dựng và bảo trì máy chủ xác thực riêng. Hiệu quả mạnh mẽ và linh hoạt trong việc Scale.

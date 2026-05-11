@@ -13,6 +13,6 @@ This section covers **AWS Amplify** for frontend hosting and **Amazon Cognito** 
 
 ### Cognito
 
-**Role:** **User Pool** and **App client** for sign-up, sign-in, and issuing tokens; optional **Lambda triggers** (for example **PostConfirmation** syncing users into RDS).
+**Role:** **User Pool** and **App client** for sign-up, sign-in, and issuing tokens.
 
-**Why we chose it:** Fully managed authentication, standard **JWTs**, and integration with the frontend and Lambda — no need to build and run a dedicated auth server. Strong efficiency and flexible **scaling** as usage grows.
+**Why we chose it:** Fully managed authentication, standard **JWTs**, and integration with the frontend and backend — no need to build and run a dedicated auth server. Strong efficiency and flexible **scaling** as usage grows.

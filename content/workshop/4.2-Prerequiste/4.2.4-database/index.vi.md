@@ -9,9 +9,9 @@ Có thể bố trí **RDS trên nhiều AZ** (ví dụ primary và bản **stand
 
 ### RDS PostgreSQL
 
-**Vai trò:** CSDL quan hệ chính cho backend **NestJS** / **Prisma**; instance nằm trong **private data subnet**, chỉ lắng nghe Postgres nội bộ.
+**Vai trò:** CSDL quan hệ chính cho backend **NestJS** / **TypeORM**; instance nằm trong **private data subnet**, chỉ lắng nghe Postgres nội bộ.
 
-**Lý do chọn:** PostgreSQL phù hợp mô hình quan hệ + Prisma; RDS giảm vận hành patch/backup cơ bản so với tự cài Postgres trên EC2.
+**Lý do chọn:** PostgreSQL phù hợp mô hình quan hệ + TypeORM; RDS giảm vận hành patch/backup cơ bản so với tự cài Postgres trên EC2.
 
 ### RDS Security Group (nhóm bảo mật tầng dữ liệu)
 
@@ -21,7 +21,7 @@ Có thể bố trí **RDS trên nhiều AZ** (ví dụ primary và bản **stand
 
 ### Secrets Manager (mật khẩu DB)
 
-**Vai trò:** Lưu **mật khẩu RDS** dạng secret, inject vào ứng dụng/Lambda qua IAM thay vì hard-code.
+**Vai trò:** Lưu **mật khẩu RDS** dạng secret, inject vào backend qua IAM thay vì hard-code.
 
 **Lý do chọn:** Không để mật khẩu trong repo hay biến môi trường thô; xoay vòng và kiểm soát truy cập theo chính sách AWS.
 

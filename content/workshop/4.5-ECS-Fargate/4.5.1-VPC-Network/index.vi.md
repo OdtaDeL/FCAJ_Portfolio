@@ -101,7 +101,7 @@ Bạn cần tạo 3 Security Group theo thứ tự logic sau:
 
 ### 4.1 ALB Security Group (`spendwise-api-vpc-alb-sg`)
 - **Inbound Rule**: Cho phép `HTTP` (Port 80) từ `0.0.0.0/0`.
-- **Lưu ý**: Sau khi triển khai xong Lambda, bạn nên đổi Source về SG của Lambda để bảo mật hơn.
+- **Lưu ý**: Sau khi triển khai xong ECS task, bạn nên giới hạn Source về SG của ECS để bảo mật hơn.
 
 ### 4.2 ECS Security Group (`spendwise-api-vpc-ecs-sg`)
 - **Inbound Rule**: Chỉ cho phép `Custom TCP` (Port 3000) từ Source là `spendwise-api-vpc-alb-sg`.
